@@ -1,0 +1,77 @@
+% presentation.sty
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{defense}[2024/12/09 PhD defense preamble]
+
+\RequirePackage[normalem]{ulem}
+\RequirePackage{tikz}
+\RequirePackage{pgfplots}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{amsmath}
+\RequirePackage{tcolorbox}
+
+
+% Commands ====================================================================
+
+\newcommand{\schema}[1]{%
+  %\frametitle{The Brain-Computer Interface (BCI)}
+  \begin{tikzpicture}[remember picture, overlay]
+    \node[anchor=center,inner sep=0] at (current page.center) {%
+      \includegraphics[width=\paperwidth]{#1}
+    };
+  \end{tikzpicture}
+}
+
+
+% Define the \aside command
+\newcommand{\aside}[1]{%
+    \begin{tikzpicture}[remember picture, overlay]
+        % Single node with rectangle and content
+        \node[
+            anchor=north east,
+            inner sep=.05\paperwidth,
+            text width=0.25\paperwidth,
+            align=left,
+            fill=mylightgray,
+            draw=none,
+            minimum height=\paperheight,
+            text=darkgray
+          ] at (current page.north east) {\parbox{.25\paperwidth}{#1}};
+    \end{tikzpicture}%
+}
+
+\newcommand{\outline}[2]{
+{%
+  \setbeamercolor{background canvas}{bg=mylightgray}
+  \begin{frame}
+  \frametitle{#1}
+  \schema{#2}
+  \end{frame}
+}
+  }
+
+% Layout ======================================================================
+
+\renewcommand{\arraystretch}{1.5}
+
+\pgfplotsset{%
+  compat=newest,
+  every axis/.append style={%
+    %scale only axis,
+    enlarge y limits=false,
+    enlarge x limits=false,
+    every tick label/.append style={color=mydarkgray, font=\sffamily\small,/pgf/number format/assume math mode=true},
+    every axis label/.append style={color=mydarkgray, font=\sffamily\small},
+    every title/.append style={color=mydarkgray, font=\sffamily\small},
+    xticklabel={\pgfmathprintnumber[assume math mode=true]{\tick}},
+    yticklabel={\pgfmathprintnumber[assume math mode=true]{\tick}},
+    axis line style={color=mydarkgray}, % Set the axis line color to mydarkgray
+    cycle list={%
+        {accent1, thick},    % First color (red)
+        {accent2, thick},   % Second color (blue)
+        {accent3, thick},  % Third color (green)
+    },
+  }
+}
+
+% Include =====================================================================
+\input{tensors.tex}

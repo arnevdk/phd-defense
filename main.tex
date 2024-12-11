@@ -1,14 +1,13 @@
 \documentclass{kul-ulille-beamer}
 %\setbeameroption{show notes on second screen=right} % Both
-%\usepackage{opensans}
-\usepackage[normalem]{ulem}
 
-\usepackage{tikz}
-\usepackage{pgfplots}
-\usepackage[T1]{fontenc}
-\usepackage{amsmath}
+% TODO
+% Introduce decoding from spatiotemporal nature of ERP
+% Merge 1. and 2. into 'bci design' to declutter
 
-\input{tensors.tex}
+
+%% Preamble ===================================================================
+\usepackage{defense}
 
 \addbibresource{references.bib}
 
@@ -16,21 +15,28 @@
   A visual Brain-Computer Interface \\
   for gaze-free communication
 }
-
 \author{Arne Van Den Kerchove}
 \date{December 16, 2024}
+
 \begin{document}
+
+% =============================================================================
+
 \titleframe
 
-\section{Introduction}
 % =============================================================================
+
 \begin{frame}
-  \frametitle{The Locked-in Syndrome: \\ a functioning mind trapped in a paralyzed
-  body}
-  \begin{minipage}{.5\textwidth}
+  \frametitle{The Locked-in Syndrome}
+  \centering
+  {\Large A functioning mind trapped in a paralyzed  body}
+  \bigskip
+  \bigskip
+
+  \begin{minipage}[b]{.5\textwidth}
     \includegraphics[width=\textwidth]{figures/intro/damien.jpg}
   \end{minipage}\hfill%
-  \begin{minipage}{.4\textwidth}
+  \begin{minipage}[b]{.4\textwidth}
     Severe paralysis leads to \\
     \emph{Locked-in Syndrome}, due to
     \begin{itemize}
@@ -57,513 +63,661 @@
     % TODO: Damiens story
   \end{itemize}
 }
-
-% =============================================================================
+%
 \begin{frame}
-  \frametitle{A solution: the Brain-Computer Interface (BCI)}
-  \centering
-  \includegraphics[width=.75\textwidth]{figures/intro/bci_loop.png}
+  \frametitle{The Brain-Computer Interface}
+  \schema{figures/intro/bci.pdf}
 \end{frame}
 
 
-\note{%
-  \begin{itemize}
-    \item independent of remaining muscle control in theory
-    \item while performing a task
-  \end{itemize}
+\begin{frame}[c]
+  \frametitle{Research question}
+  \centering
+
+  \begin{minipage}{.8\textwidth}
+  \centering
+  \huge
+  How can we optimize \emph{BCI}  assistive technology design  to make it more \emph{inclusive} and
+  \emph{efficient}?
+  \end{minipage}
+
+\end{frame}
+
+\note{
+  inclusive: more people can use it
 }
 
+\outline{Outline}{figures/outline.pdf}
+
+
 % =============================================================================
-\begin{frame}
-  \frametitle{Recording the brain activity}%
-  \begin{minipage}{.5\textwidth}
-    \centering
-    \includegraphics[width=.9\textwidth]{figures/intro/modalities.png}
-  \end{minipage}\hfill%
-  \begin{minipage}{.4\textwidth}
-    \vspace{-1cm}
-    \emph{EEG}  measures the electrical field on the
-    scalp: noise and some brain activity
+
+\outline{1. Recording the brain activity}{figures/outline_record.pdf}
+
+\begin{frame}[c]
+  \frametitle{Recording technologies}
+  \schema{figures/intro/recording_modalities.pdf}
+  \hfill
+  \aside{%
+    \emph{EEG}  measures the \\ electrical field on the
+    scalp:
     \begin{itemize}
       \item[\textcolor{mygreen}{+}] Non-invasive
       \item[\textcolor{mygreen}{+}] Cheap
-      \item[\textcolor{mygreen}{+}] No durability issues
-      \item[\textcolor{myred}{-}] Limited resolution
-      \item[\textcolor{myred}{-}] Low signal-to-noise ratio
+      \item[\textcolor{myred}{--}] Limited resolution
+      \item[\textcolor{myred}{--}] Low signal-to-noise ratio
     \end{itemize}
-    \bigskip
+  }
+\end{frame}
+% TODO: de clue: we moeten met deze ruis omgaan in paradigm and decoder design
 
-    \centering
-    \includegraphics[width=.7\textwidth]{figures/intro/eeg.jpg}
+% =============================================================================
+
+\outline{2. Interaction \& stimulation}{figures/outline_paradigm.pdf}
+% TODO: je kan de hersenactiviteit wel opnemen, maar dat is pas nuttig als de
+% gebruiker een bepaalde taak aan het uitvoeren is zodat we weten welke
+% activiteit we eruit moeten halen
+
+\begin{frame}
+  \frametitle{BCI paradigms}
+  \begin{minipage}[c]{.5\textwidth}
+    \footnotesize
+    \input{figures/intro/paradigms.tikz.tex}
+  \end{minipage}\hfill%
+
+  \aside{%
+    \small
+    \emph[accent3]{Passive} BCIs
+      \begin{itemize}
+        \footnotesize
+        \item[\textcolor{myred}{--}] Less practical
+      \end{itemize}
+      \smallskip
+
+      \emph[accent1]{Active} BCIs
+      \begin{itemize}
+        \footnotesize
+        \item[\textcolor{mygreen}{+}] Intuitive, self-paced
+        \item[\textcolor{myred}{--}] High speed requires invasive
+      \end{itemize}
+      \smallskip
+
+      \emph[accent2]{Reactive} BCIs decode reactions to attended stimuli%
+      \begin{itemize}
+        \footnotesize
+        \item[\textcolor{myred}{--}] Less intuitive
+        \item[\textcolor{mygreen}{+}] Fast stimulation
+        \item[\textcolor{mygreen}{+}] Suited for EEG
+      \end{itemize}
+      \emph{Visual} is fastest
+    }
+\end{frame}
+\note{%
+  %TODO: Goal: fast transfering of information in communication assisted technology
+  \begin{itemize}
+    \item categorized participation and stimulation
+    \item performing a specific task
+    \item brain activity from task can be decoded
+    \item passive less useful
+  \end{itemize}
+}
+%TODO: stimuli represent discrete choices, e.g.virtual keyboard
+
+\begin{frame}
+  \frametitle{The visual event-related potential  paradigm}
+  % TODO: switch bottom top
+  \begin{minipage}[c]{.4\textwidth}
+    \begin{tikzpicture}
+      \node at (current page.north east) [%
+        anchor=north east,
+        text width=7cm,
+        fill=white, opacity=1,
+        xshift=1cm,
+        yshift=-.5cm,
+        thin
+      ]{%
+        \input{figures/intro/erp.tikz.tex}
+      };
+    \end{tikzpicture}
+    \smallskip
+
+    \includegraphics[width=\textwidth]{figures/intro/oddball.pdf}
+  \end{minipage}\hfill%
+  \begin{minipage}[c]{.5\textwidth}
+    \begin{enumerate}
+      \item Stimuli flash one by one
+      \smallskip
+      \item Flashes evoke ERPs
+      \smallskip
+      \item User attends a stimulus
+      \smallskip
+      \item ERP components are \\ modulated by attention
+      \smallskip
+      \item Decode target based on \\ timing and components
+    \end{enumerate}
   \end{minipage}
 \end{frame}
 
 % =============================================================================
-\begin{frame}
-  \frametitle{The visual event-related potential \\ paradigm}
-  \centering
-  \includegraphics[width=.75\textwidth]{figures/intro/bci_loop.png}
-\end{frame}
+
+\outline{3. Gaze-independence}{figures/outline_gaze.pdf}
+
 
 \begin{frame}
-  \centering
-  \frametitle{The visual event-related potential \\ paradigm}
-  \includegraphics[width=.75\textwidth]{figures/intro/visual_bci_paradigm.png}
-\end{frame}
-
-\begin{frame}
-  \centering
-  \frametitle{The visual event-related potential \\ paradigm}
-  \includegraphics[width=.75\textwidth]{figures/intro/visual_bci_paradigm.png}
-  \begin{tikzpicture}[remember picture, overlay]
-    \node at (current page.north east) [%
-      anchor=north east,
-      text width=7cm,
-      fill=white, opacity=1,
-      xshift=1cm,
-      yshift=-.5cm,
-      thin
-    ]{%
-      \input{figures/intro/erp.tikz.tex}
-    };
-  \end{tikzpicture}
-\end{frame}
-
-\note{
-  Consists of some component peaks
-  Amplitude is altered by visual stimulation, attention, occurrence of
-  something rare or unexpected,
-  These properties allows us to decode which target was focused on by the
-  user
-}
-
-% =============================================================================
-\begin{frame}
-  \frametitle{\emph{Problem:} Eye motor impairment \\ prevents gazing at targets}
+  \frametitle{\emph{Problem:} Eye motor impairment \\  prevents gazing at targets}
 
   \begin{minipage}[c]{.4\textwidth}
     \raggedright
-    Visual skills related to disease \\ affect BCI
-    operation\\
+    \emph{Visual skills} related to disease \\ affect BCI
+    operation
     {\tiny\cite{FriedOken2020}}
+  {\small
   \begin{itemize}
-    \item Visual fixation
-    \item Eyelid function
-    \item Ocular motility
-    \item Binocular vision
-    \item Involuntary movement
-    \item Field of vision
+    \item Discomfort fixating
+    \item Restricted movement
+    \item Involuntary movements
   \end{itemize}
-  \end{minipage}\hfill%
-  \begin{minipage}[c]{.05\textwidth}
-    \centering
-      \Huge
-      $\rightarrow$
-  \end{minipage}\hfill%
+  }
+  \bigskip
+
+  Decoding relies on \emph{visual ERP} components {\tiny\cite{Treder2010}}
+	\end{minipage}\hfill%
   \begin{minipage}[c]{.4\textwidth}
-    \centering
-    \emph{Overt} visuospatial attention
-    \includegraphics[width=.8\textwidth]{figures/intro/attention_overt.pdf}
+    \vspace{-1cm}
+		\centering
+		\includegraphics[width=.7\textwidth]{figures/intro/covert_performance_drop/brunner_2010_line.png}
+
+    \raggedleft
+    {\tiny\cite{RonAngevin2019}}
     \bigskip
 
-    \emph{Covert} visuospatial attention
-    \includegraphics[width=.8\textwidth]{figures/intro/attention_covert.pdf}
-  \end{minipage}
-\end{frame}
 
+    \framebox{\parbox{\textwidth}{%
+    \centering
+    Those who can't use eye \\ tracking need BCIs
+    \smallskip
+
+    \emph{but}
+    \smallskip
+
+    Visual BCIs perform poorly
+    }}
+
+
+	\end{minipage}
+\end{frame}
 
 \note{
   \begin{itemize}
-    \item Those of you paying attention might already have spotted the problem here
+    \item Explain axes
+    \item Accuracy is lower when not gazing directly
+    \item Even below 80\% usability threshold
   \end{itemize}
+
 }
+
+
+\begin{frame}
+  \frametitle{Covert visuospatial attention experiment}
+
+  \begin{minipage}{.6\textwidth}
+    \centering
+
+    \begin{minipage}[t]{.45\textwidth}
+    \input{figures/covert/interface_3.tikz.tex}
+    \end{minipage}\hfill%
+    \begin{minipage}[t]{.45\textwidth}
+      \includegraphics[width=\textwidth]{example-image}
+
+      timeline
+    \end{minipage}
+    \bigskip
+    \bigskip
+    \bigskip
+
+
+    {\small
+    \begin{minipage}{.3\textwidth}
+      \emph{Overt} VSA
+      \smallskip
+
+      \includegraphics[width=\textwidth]{figures/covert/attention_overt.pdf}
+    \end{minipage}\hfill%
+    \begin{minipage}{.3\textwidth}
+      \emph{Covert} VSA
+      \smallskip
+
+      \includegraphics[width=\textwidth]{figures/covert/attention_covert.pdf}
+    \end{minipage}\hfill%
+    \begin{minipage}{.3\textwidth}
+      \small
+      \emph{Split} VSA
+      \smallskip
+
+      \includegraphics[width=\textwidth]{figures/covert/attention_split.pdf}
+    \end{minipage}%
+  }
+  \end{minipage}\hfill
+
+  \aside{%
+    \small
+    CVSA-ERP dataset
+    \begin{itemize}
+      \item 15 subjects, $\pm$ 11h stimulation
+      \item Hex-o-Spell interface \\ {\tiny\cite{Treder2010}}
+      \item Discrete gaze-independent conditions
+    \end{itemize}
+    {\tiny\cite{VanDenKerchove2024}}
+  }
+\end{frame}
+\note{
+  Hex-o-Spell optimized for gaze-independence
+}
+
+\begin{frame}
+  \frametitle{Evoked ERP components}
+  \small
+  \begin{minipage}[t]{.45\textwidth}
+    \includegraphics[width=.2\textwidth]{figures/covert/attention_overt.pdf}
+    \hspace{.5em}
+    \emph{Overt} VSA
+    \smallskip
+
+    \includegraphics[width=\textwidth]{figures/covert/erps/erp_overt_cluster-1.pdf}
+    \includegraphics[width=\textwidth]{figures/covert/erps/erp_overt_cluster-0.pdf}
+  \end{minipage}\hfill%
+  \begin{minipage}[t]{.45\textwidth}
+    \includegraphics[width=.2\textwidth]{figures/covert/attention_covert.pdf}
+    \hspace{.5em}
+    \emph{Covert} VSA
+    \smallskip
+
+    \includegraphics[width=\textwidth]{figures/covert/erps/erp_covert_cluster-0.pdf}
+    \smallskip
+
+    \includegraphics[width=.2\textwidth]{figures/covert/attention_split.pdf}
+    \hspace{.5em}
+    \emph{Split} VSA
+    \smallskip
+
+
+    \includegraphics[width=\textwidth]{figures/covert/erps/erp_split_cluster-0.pdf}
+
+  \end{minipage}
+
+\end{frame}
 
 % =============================================================================
 
+
+%% =============================================================================
+%
+%\begin{frame}[c]
+%    \centering
+%    \Large
+%
+%    Balance the bandwidth of a \emph{visual ERP BCI} with the \\needs
+%    of individuals with \emph{eye motor impairment} \\ through \emph{improving
+%    decoding} of covert attention.
+%\end{frame}
+%\note{
+%
+%  Almost a contradiction: patients are completely paralysed with no motor
+%  output, even from the eyes to the point where they cannot use an eye tracker.
+%  So we propose a BCI for them as a supposedly independent communication means
+%  that does not require any muscle control. Yet, exactly in these cases spatial visual
+%  ERP bcis perform poorly.
+%}
+%
+%\tocframeall
+%\section{\textbf{C1}: General ERP decoding algorithms}
+%\tocframe
+%
+%\begin{frame}[c]
+%  \frametitle{Exploit channel-time structure of ERP data \\ for regularization}
+%  \begin{minipage}[c]{.4\textwidth}
+%    \centering
+%    \includegraphics[width=\textwidth]{figures/bttda/tensor_st.pdf}
+%  \end{minipage}\hfill%
+%  \begin{minipage}[c]{.4\textwidth}
+%    \centering
+%    \includegraphics[width=\textwidth]{figures/bttda/tensor_flat.pdf}
+%  \end{minipage}
+%\end{frame}
+%
+%
+%\begin{frame}[c]
+%	\frametitle{Higher-order discriminant analysis}
+%	\centering
+%	\begin{tikzpicture}[y=-1cm]
+%		\TensorThree{$\ten{X}$}{}{}{}{2}{2}{1}
+%		\begin{scope}[shift={(-1.1,0)}]
+%			\TensorTwo{$\mat{W}_1$}{}{}{1}{2}
+%		\end{scope}
+%		\begin{scope}[shift={(0,2.1)}]
+%			\TensorTwo{$\mat{W}_2$}{}{}{2}{1}
+%		\end{scope}
+%		\node at (3.3,.5, 2) {$=$};
+%		\begin{scope}[shift={(4,0)}]
+%			\TensorThree{$\ten{G}$}{}{}{$N$}{1}{1}{1}
+%		\end{scope}
+%	\end{tikzpicture}
+%
+%	\bigskip
+%
+%  $\ten{G} = \ten{X}\times_1\mat{W}_1\cdots\times_{K-1}\mat{W}_{K-1}$ \\
+%  s.t. $\ten{G}$ is maximally \emph{discriminant}
+%	between classes.
+%\end{frame}
+%
+%\begin{frame}[c]
+%	\frametitle{HODA and the Tucker tensor core model}
+%
+%	\begin{minipage}{.4\linewidth}
+%		\centering
+%    \emph{Tucker} model
+%
+%		\bigskip
+%
+%
+%		\begin{tikzpicture}[y=-1cm]
+%			\begin{scope}[shift={(-1,0)}]
+%				\TensorThree{$\ten{X}$}{}{}{}{1}{2}{1}
+%				\node at (2.5,.5, 2) {$\rightarrow$};
+%				\begin{scope}[shift={(3,0)}]
+%					\TensorThree{$\ten{G}$}{}{}{}{1}{1}{1}
+%				\end{scope}
+%				\node at (4.1,1.1, 2) {$\downarrow$};
+%				\begin{scope}[shift={(3,2)}]
+%					\TensorTwo{\textit{clf}}{}{}{1.5}{.5}
+%				\end{scope}
+%			\end{scope}
+%		\end{tikzpicture}
+%	\end{minipage}\hfill%
+%	\begin{minipage}{.5\linewidth}
+%		Strong assumptions\\
+%		on data structure
+%		\begin{itemize}
+%			\item[\textcolor{mygreen}{+}] Efficient
+%			\item[\textcolor{mygreen}{+}] Regularizing constraints
+%			\item[\textcolor{mygreen}{+}] Increased flexibility
+%				\smallskip
+%
+%      \item[\textcolor{myred}{--}] \sout{Redundant features}
+%      \item[\textcolor{myred}{--}] \sout{More parameters to tune}
+%		\end{itemize}
+%	\end{minipage}
+%\end{frame}
+%
+%\begin{frame}[c]
+%	\frametitle{Towards a Block-Term Tensor model}
+%	\begin{minipage}{.4\linewidth}
+%		\centering
+%		\textbf{Tucker} model
+%
+%		\bigskip
+%
+%		\begin{tikzpicture}[y=-1cm]
+%			\begin{scope}[shift={(-1,0)}]
+%				\TensorThree{$\ten{X}$}{}{}{}{1}{2}{1}
+%				\node at (2.5,.5, 2) {$\rightarrow$};
+%				\begin{scope}[shift={(3,0)}]
+%					\TensorThree{$\ten{G}$}{}{}{}{1}{1}{1}
+%				\end{scope}
+%				\node at (4.1,1.1, 2) {$\downarrow$};
+%				\begin{scope}[shift={(3,2)}]
+%					\TensorTwo{\textit{clf}}{}{}{1.5}{.5}
+%				\end{scope}
+%			\end{scope}
+%		\end{tikzpicture}
+%	\end{minipage}\vline%
+%	\begin{minipage}{.6\linewidth}
+%		\centering
+%		\emph{Block-Term Tensor} model
+%
+%		\bigskip
+%
+%
+%		\begin{tikzpicture}[y=-1cm]
+%			\begin{scope}[shift={(-1,0)}]
+%				\TensorThree{$\ten{X}$}{}{}{}{1}{2}{1}
+%				\node at (2.5,.5, 2) {$\rightarrow$};
+%				\begin{scope}[shift={(3,0)}]
+%					\TensorThree{$\ten{G}^{(1)}$}{}{}{}{1}{1}{1}
+%				\end{scope}
+%				\node at (5.5,.5,2) {$,\cdots,$};
+%				\begin{scope}[shift={(6,0)}]
+%					\TensorThree{$\ten{G}^{(B)}$}{}{}{}{1}{1}{1}
+%				\end{scope}
+%				\node at (4.1,1.1, 2) {$\downarrow$};
+%				\node at (5.6,1.1, 2) {$\downarrow$};
+%				\node at (7.1,1.1, 2) {$\downarrow$};
+%				\begin{scope}[shift={(3,2)}]
+%					\TensorTwo{\textit{clf}}{}{}{4.5}{.5}
+%				\end{scope}
+%			\end{scope}
+%		\end{tikzpicture}
+%
+%	\end{minipage}
+%\end{frame}
+%
+%\begin{frame}[c]
+%	\frametitle{Block-term Tensor Discriminant Analysis}
+%
+%	\begin{minipage}{.6\linewidth}
+%    \centering
+%    \emph{Block-term Tensor} model
+%
+%		\bigskip
+%
+%    \raggedright
+%		\begin{tikzpicture}[y=-1cm]
+%			\begin{scope}[shift={(-1,0)}]
+%				\TensorThree{$\ten{X}$}{}{}{}{1}{2}{1}
+%				\node at (2.5,.5, 2) {$\rightarrow$};
+%				\begin{scope}[shift={(3,0)}]
+%					\TensorThree{$\ten{G}^{(1)}$}{}{}{}{1}{1}{1}
+%				\end{scope}
+%				\node at (5.5,.5,2) {$,\cdots,$};
+%				\begin{scope}[shift={(6,0)}]
+%					\TensorThree{$\ten{G}^{(B)}$}{}{}{}{1}{1}{1}
+%				\end{scope}
+%				\node at (4.1,1.1, 2) {$\downarrow$};
+%				\node at (5.6,1.1, 2) {$\downarrow$};
+%				\node at (7.1,1.1, 2) {$\downarrow$};
+%				\begin{scope}[shift={(3,2)}]
+%					\TensorTwo{\textit{clf}}{}{}{4.5}{.5}
+%				\end{scope}
+%			\end{scope}
+%		\end{tikzpicture}
+%	\end{minipage}\hfill%
+%	\begin{minipage}{.4\linewidth}
+%		Weaker assumptions\\
+%		on data structure
+%		\begin{itemize}
+%
+%			\item[\textcolor{mygreen}{+}] Efficient
+%			\item[\textcolor{mygreen}{+}] Regularizing constraints
+%				\smallskip
+%
+%      \item[\textcolor{myred}{--}] \sout{Manual rank selection}
+%      \item[\textcolor{myred}{--}] \sout{Redundant features}
+%      \item[\textcolor{myred}{--}] \sout{Cannot model full covariance structure}
+%		\end{itemize}
+%	\end{minipage}
+%\end{frame}
+%
+%\begin{frame}[c]
+%	\frametitle{Block-term tensor model through deflation}
+%	\centering
+%	\begin{tikzpicture}[y=-1cm]
+%		\TensorThree{$\ten{X}$}{}{}{}{2}{2}{1}
+%		\node at (3.3,.5, 2) {$\cong$};
+%		\begin{scope}[shift={(6,0)}]
+%			\TensorThree{$\ten{G}^{(1)}$}{}{}{}{1}{1}{1}
+%		\end{scope}
+%		\begin{scope}[shift={(3.9,0)}]
+%			\TensorTwo{$\mat{A}_1^{(1)}$}{}{}{2}{1}
+%		\end{scope}
+%		\begin{scope}[shift={(6,1.1)}]
+%			\TensorTwo{$\mat{A}_2^{(1)}$}{}{}{1}{2}
+%		\end{scope}
+%		\node at (8.6,.5, 2) {$+\cdots+$};
+%		\begin{scope}[shift={(12,0)}]
+%			\TensorThree{$\ten{G}^{(B)}$}{}{}{}{1}{1}{1}
+%		\end{scope}
+%		\begin{scope}[shift={(9.9,0)}]
+%			\TensorTwo{$\mat{A}_1^{(B)}$}{}{}{2}{1}
+%		\end{scope}
+%		\begin{scope}[shift={(12,1.1)}]
+%			\TensorTwo{$\mat{A}_2^{(B)}$}{}{}{1}{2}
+%		\end{scope}
+%	\end{tikzpicture}
+%
+%
+%  \emph{Deflation} scheme:
+%	%$$\ten{X}^{(0)} = \ten{X}$$
+%	$$\ten{X}^{(b+1)} = \ten{X}^{(b)} -
+%		\ten{G}^{(b)}\times_1\mat{A}_1^{(b)}\cdots\times_K\mat{A}_K^{(b)}$$
+%\end{frame}
+%
+%\begin{frame}[c]
+%  \frametitle{BTTDA oupterforms HODA \\ on benchmark datasets}
+%  \includegraphics[width=.7\textwidth]{figures/bttda/blocks.png}%
+%  \includegraphics[width=.3\textwidth]{figures/bttda/results_table.png}
+%
+%\end{frame}
+%
+%\section{\textbf{C2}: Gaze-independent ERP decoding}
+%\tocframe
+%\begin{frame}
+%  \frametitle{Covert attention ERP \\ data collection}
+%  \begin{minipage}{.45\textwidth}
+%    \includegraphics[width=\textwidth]{figures/covert/timeline.pdf}
+%  \end{minipage}\hfill%
+%  \begin{minipage}{.45\textwidth}
+%     CVSA-ERP dataset
+%     \begin{itemize}
+%       \item $N=15$
+%       \item ISI=$300\pm100$ ms
+%       \item $\pm$11,25h recoded stimulation,
+%       \item 3 conditions based on gaze and attention cue
+%     \end{itemize}
+%
+%    \centering
+%    \includegraphics[width=.45\textwidth]{figures/covert/attention_overt.pdf}\hfill%
+%    \includegraphics[width=.45\textwidth]{figures/covert/attention_covert.pdf}%
+%    \bigskip
+%
+%    \includegraphics[width=.45\textwidth]{figures/covert/attention_split.pdf}
+%  \end{minipage}
+%\end{frame}
+%
+%\begin{frame}
+%  \frametitle{Grand average ERPs}
+%  TODO: grand average ERPs and F-scores
+%\end{frame}
+%
+%\begin{frame}[c]
+%  \frametitle{Latency jitter decreases performance \\ in covert and split
+%  attention \tiny\cite{Arico2014}}
+%  \begin{minipage}{.4\textwidth}
+%    \input{figures/covert/smearing.tikz.tex}
+%  \end{minipage}\hfill%
+%  \begin{minipage}{.55\textwidth}
+%    \input{figures/covert/jitter.pgf}
+%  \end{minipage}
+%\end{frame}
+%\begin{frame}[c]
+%  \frametitle{Classifier-based Latency Estimation with Woody iterations}
+%
+%  \includegraphics[width=.6\textwidth]{figures/covert/figure1.pdf}
+%\end{frame}
+%\begin{frame}
+%  \frametitle{Aligned vs. non-aligned simulated data}
+%\end{frame}
+%\begin{frame}
+%  \frametitle{Increase in gaze-independent decoding accuracy}
+%\end{frame}
+%
+%\tocframe
+%\section{\textbf{C3}: End-user case studies}
+%\begin{frame}
+%  \frametitle{Experimental setup}
+%  \begin{itemize}
+%    \item show setup
+%    \item list participants
+%  \end{itemize}
+%\end{frame}
+%\begin{frame}
+%  \frametitle{Impaired visual skills}
+%  show table
+%\end{frame}
+%\begin{frame}
+%  \frametitle{Gaze tracking analysis}
+%  highlight specific gaze case
+%\end{frame}
+%\begin{frame}
+%  \frametitle{Usability}
+%  how many achieved higher than chance?
+%\end{frame}
+%\section{Conclusion \& perspectives}
 \begin{frame}
-	\frametitle{Covert attention decoding \\ performs poorly}
-	\vskip-.5in
-	\begin{minipage}{.3\textwidth}
-		\begin{itemize}
-			\item Multi-target, spatial interfaces
-			\item Long established, not solved
-			\item Accuracy at or below \\ usability threshold of 80\%
-		\end{itemize}
-	\end{minipage}\hfill%
-	\begin{minipage}{.5\textwidth}
-		\includegraphics[width=\textwidth]{figures/intro/covert_performance_drop/ron_2019.png}
-
-		\tiny\cite{Brunner2010}
-
-		\begin{minipage}[b]{.5\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{figures/intro/covert_performance_drop/treder_blankertz_2010.png}
-
-			\tiny\cite{Treder2010}
-		\end{minipage}\hfill%
-		\begin{minipage}[b]{.5\textwidth}
-			\centering
-			\includegraphics[width=.8\textwidth]{figures/intro/covert_performance_drop/brunner_2010.png}
-
-			\tiny\cite{Ron2019}
-		\end{minipage}%
-	\end{minipage}\hfill
-
-\end{frame}
-
-\begin{frame}
-	\frametitle{Covert attention decoding \\ performs poorly}
-	\vskip-.5in
-	\begin{minipage}{.3\textwidth}
-		\begin{itemize}
-			\item Multi-target, spatial interfaces
-			\item Long established, not solved
-			\item Accuracy at or below \\ usability threshold of 80\%
-		\end{itemize}
-	\end{minipage}\hfill%
-	\begin{minipage}{.5\textwidth}
-		\includegraphics[width=\textwidth]{figures/intro/covert_performance_drop/ron_2019_line.png}
-
-		\tiny\cite{Brunner2010}
-
-		\begin{minipage}[b]{.5\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{figures/intro/covert_performance_drop/treder_blankertz_2010_line.png}
-
-			\tiny\cite{Treder2010}
-		\end{minipage}\hfill%
-		\begin{minipage}[b]{.5\textwidth}
-			\centering
-			\includegraphics[width=.8\textwidth]{figures/intro/covert_performance_drop/brunner_2010_line.png}
-
-			\tiny\cite{Ron2019}
-		\end{minipage}%
-	\end{minipage}\hfill
-
-\end{frame}
-
-\note{
-  Has been a problem in the past,
-  And still is the case if the interface is not properly adapted
-
-}
-
-
-
-% =============================================================================
-
-\begin{frame}[c]
-    \centering
-    \Large
-
-    Balance the bandwidth of a \emph{visual ERP BCI} with the \\needs
-    of individuals with \emph{eye motor impairment} \\ through \emph{improving
-    decoding} of covert attention.
-\end{frame}
-\note{
-
-  Almost a contradiction: patients are completely paralysed with no motor
-  output, even from the eyes to the point where they cannot use an eye tracker.
-  So we propose a BCI for them as a supposedly independent communication means
-  that does not require any muscle control. Yet, exactly in these cases spatial visual
-  ERP bcis perform poorly.
-}
-
-\tocframeall
-\section{\textbf{C1}: General ERP decoding algorithms}
-\tocframe
-
-\begin{frame}[c]
-  \frametitle{Exploit channel-time structure of ERP data \\ for regularization}
-  \begin{minipage}[c]{.4\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{figures/bttda/tensor_st.pdf}
-  \end{minipage}\hfill%
-  \begin{minipage}[c]{.4\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{figures/bttda/tensor_flat.pdf}
-  \end{minipage}
-\end{frame}
-
-
-\begin{frame}[c]
-	\frametitle{Higher-order discriminant analysis}
-	\centering
-	\begin{tikzpicture}[y=-1cm]
-		\TensorThree{$\ten{X}$}{}{}{}{2}{2}{1}
-		\begin{scope}[shift={(-1.1,0)}]
-			\TensorTwo{$\mat{W}_1$}{}{}{1}{2}
-		\end{scope}
-		\begin{scope}[shift={(0,2.1)}]
-			\TensorTwo{$\mat{W}_2$}{}{}{2}{1}
-		\end{scope}
-		\node at (3.3,.5, 2) {$=$};
-		\begin{scope}[shift={(4,0)}]
-			\TensorThree{$\ten{G}$}{}{}{$N$}{1}{1}{1}
-		\end{scope}
-	\end{tikzpicture}
-
-	\bigskip
-
-  $\ten{G} = \ten{X}\times_1\mat{W}_1\cdots\times_{K-1}\mat{W}_{K-1}$ \\
-  s.t. $\ten{G}$ is maximally \emph{discriminant}
-	between classes.
-\end{frame}
-
-\begin{frame}[c]
-	\frametitle{HODA and the Tucker tensor core model}
-
-	\begin{minipage}{.4\linewidth}
-		\centering
-    \emph{Tucker} model
-
-		\bigskip
-
-
-		\begin{tikzpicture}[y=-1cm]
-			\begin{scope}[shift={(-1,0)}]
-				\TensorThree{$\ten{X}$}{}{}{}{1}{2}{1}
-				\node at (2.5,.5, 2) {$\rightarrow$};
-				\begin{scope}[shift={(3,0)}]
-					\TensorThree{$\ten{G}$}{}{}{}{1}{1}{1}
-				\end{scope}
-				\node at (4.1,1.1, 2) {$\downarrow$};
-				\begin{scope}[shift={(3,2)}]
-					\TensorTwo{\textit{clf}}{}{}{1.5}{.5}
-				\end{scope}
-			\end{scope}
-		\end{tikzpicture}
-	\end{minipage}\hfill%
-	\begin{minipage}{.5\linewidth}
-		Strong assumptions\\
-		on data structure
-		\begin{itemize}
-			\item[\textcolor{mygreen}{+}] Efficient
-			\item[\textcolor{mygreen}{+}] Regularizing constraints
-			\item[\textcolor{mygreen}{+}] Increased flexibility
-				\smallskip
-
-      \item[\textcolor{myred}{--}] \sout{Redundant features}
-      \item[\textcolor{myred}{--}] \sout{More parameters to tune}
-		\end{itemize}
-	\end{minipage}
-\end{frame}
-
-\begin{frame}[c]
-	\frametitle{Towards a Block-Term Tensor model}
-	\begin{minipage}{.4\linewidth}
-		\centering
-		\textbf{Tucker} model
-
-		\bigskip
-
-		\begin{tikzpicture}[y=-1cm]
-			\begin{scope}[shift={(-1,0)}]
-				\TensorThree{$\ten{X}$}{}{}{}{1}{2}{1}
-				\node at (2.5,.5, 2) {$\rightarrow$};
-				\begin{scope}[shift={(3,0)}]
-					\TensorThree{$\ten{G}$}{}{}{}{1}{1}{1}
-				\end{scope}
-				\node at (4.1,1.1, 2) {$\downarrow$};
-				\begin{scope}[shift={(3,2)}]
-					\TensorTwo{\textit{clf}}{}{}{1.5}{.5}
-				\end{scope}
-			\end{scope}
-		\end{tikzpicture}
-	\end{minipage}\vline%
-	\begin{minipage}{.6\linewidth}
-		\centering
-		\emph{Block-Term Tensor} model
-
-		\bigskip
-
-
-		\begin{tikzpicture}[y=-1cm]
-			\begin{scope}[shift={(-1,0)}]
-				\TensorThree{$\ten{X}$}{}{}{}{1}{2}{1}
-				\node at (2.5,.5, 2) {$\rightarrow$};
-				\begin{scope}[shift={(3,0)}]
-					\TensorThree{$\ten{G}^{(1)}$}{}{}{}{1}{1}{1}
-				\end{scope}
-				\node at (5.5,.5,2) {$,\cdots,$};
-				\begin{scope}[shift={(6,0)}]
-					\TensorThree{$\ten{G}^{(B)}$}{}{}{}{1}{1}{1}
-				\end{scope}
-				\node at (4.1,1.1, 2) {$\downarrow$};
-				\node at (5.6,1.1, 2) {$\downarrow$};
-				\node at (7.1,1.1, 2) {$\downarrow$};
-				\begin{scope}[shift={(3,2)}]
-					\TensorTwo{\textit{clf}}{}{}{4.5}{.5}
-				\end{scope}
-			\end{scope}
-		\end{tikzpicture}
-
-	\end{minipage}
-\end{frame}
-
-\begin{frame}[c]
-	\frametitle{Block-term Tensor Discriminant Analysis}
-
-	\begin{minipage}{.6\linewidth}
-    \centering
-    \emph{Block-term Tensor} model
-
-		\bigskip
-
-    \raggedright
-		\begin{tikzpicture}[y=-1cm]
-			\begin{scope}[shift={(-1,0)}]
-				\TensorThree{$\ten{X}$}{}{}{}{1}{2}{1}
-				\node at (2.5,.5, 2) {$\rightarrow$};
-				\begin{scope}[shift={(3,0)}]
-					\TensorThree{$\ten{G}^{(1)}$}{}{}{}{1}{1}{1}
-				\end{scope}
-				\node at (5.5,.5,2) {$,\cdots,$};
-				\begin{scope}[shift={(6,0)}]
-					\TensorThree{$\ten{G}^{(B)}$}{}{}{}{1}{1}{1}
-				\end{scope}
-				\node at (4.1,1.1, 2) {$\downarrow$};
-				\node at (5.6,1.1, 2) {$\downarrow$};
-				\node at (7.1,1.1, 2) {$\downarrow$};
-				\begin{scope}[shift={(3,2)}]
-					\TensorTwo{\textit{clf}}{}{}{4.5}{.5}
-				\end{scope}
-			\end{scope}
-		\end{tikzpicture}
-	\end{minipage}\hfill%
-	\begin{minipage}{.4\linewidth}
-		Weaker assumptions\\
-		on data structure
-		\begin{itemize}
-
-			\item[\textcolor{mygreen}{+}] Efficient
-			\item[\textcolor{mygreen}{+}] Regularizing constraints
-				\smallskip
-
-      \item[\textcolor{myred}{--}] \sout{Manual rank selection}
-      \item[\textcolor{myred}{--}] \sout{Redundant features}
-      \item[\textcolor{myred}{--}] \sout{Cannot model full covariance structure}
-		\end{itemize}
-	\end{minipage}
-\end{frame}
-
-\begin{frame}[c]
-	\frametitle{Block-term tensor model through deflation}
-	\centering
-	\begin{tikzpicture}[y=-1cm]
-		\TensorThree{$\ten{X}$}{}{}{}{2}{2}{1}
-		\node at (3.3,.5, 2) {$\cong$};
-		\begin{scope}[shift={(6,0)}]
-			\TensorThree{$\ten{G}^{(1)}$}{}{}{}{1}{1}{1}
-		\end{scope}
-		\begin{scope}[shift={(3.9,0)}]
-			\TensorTwo{$\mat{A}_1^{(1)}$}{}{}{2}{1}
-		\end{scope}
-		\begin{scope}[shift={(6,1.1)}]
-			\TensorTwo{$\mat{A}_2^{(1)}$}{}{}{1}{2}
-		\end{scope}
-		\node at (8.6,.5, 2) {$+\cdots+$};
-		\begin{scope}[shift={(12,0)}]
-			\TensorThree{$\ten{G}^{(B)}$}{}{}{}{1}{1}{1}
-		\end{scope}
-		\begin{scope}[shift={(9.9,0)}]
-			\TensorTwo{$\mat{A}_1^{(B)}$}{}{}{2}{1}
-		\end{scope}
-		\begin{scope}[shift={(12,1.1)}]
-			\TensorTwo{$\mat{A}_2^{(B)}$}{}{}{1}{2}
-		\end{scope}
-	\end{tikzpicture}
-
-
-  \emph{Deflation} scheme:
-	%$$\ten{X}^{(0)} = \ten{X}$$
-	$$\ten{X}^{(b+1)} = \ten{X}^{(b)} -
-		\ten{G}^{(b)}\times_1\mat{A}_1^{(b)}\cdots\times_K\mat{A}_K^{(b)}$$
-\end{frame}
-
-\begin{frame}[c]
-  \frametitle{BTTDA oupterforms HODA \\ on benchmark datasets}
-  \includegraphics[width=.7\textwidth]{figures/bttda/blocks.png}%
-  \includegraphics[width=.3\textwidth]{figures/bttda/results_table.png}
-
-\end{frame}
-
-\section{\textbf{C2}: Gaze-independent ERP decoding}
-\tocframe
-\begin{frame}
-  \frametitle{Covert attention ERP \\ data collection}
-  \begin{minipage}{.45\textwidth}
-    \includegraphics[width=\textwidth]{figures/covert/timeline.pdf}
-  \end{minipage}\hfill%
-  \begin{minipage}{.45\textwidth}
-     CVSA-ERP dataset
-     \begin{itemize}
-       \item $N=15$
-       \item ISI=$300\pm100$ ms
-       \item $\pm$11,25h recoded stimulation,
-       \item 3 conditions based on gaze and attention cue
-     \end{itemize}
-
-    \centering
-    \includegraphics[width=.45\textwidth]{figures/covert/attention_overt.pdf}\hfill%
-    \includegraphics[width=.45\textwidth]{figures/covert/attention_covert.pdf}%
-    \bigskip
-
-    \includegraphics[width=.45\textwidth]{figures/covert/attention_split.pdf}
-  \end{minipage}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Grand average ERPs}
-  TODO: grand average ERPs and F-scores
-\end{frame}
-
-\begin{frame}[c]
-  \frametitle{Latency jitter decreases performance \\ in covert and split
-  attention \tiny\cite{Arico2014}}
-  \begin{minipage}{.4\textwidth}
-    \input{figures/covert/smearing.tikz.tex}
-  \end{minipage}\hfill%
-  \begin{minipage}{.55\textwidth}
-    \input{figures/covert/jitter.pgf}
-  \end{minipage}
-\end{frame}
-\begin{frame}[c]
-  \frametitle{Classifier-based Latency Estimation with Woody iterations}
-
-  \includegraphics[width=.6\textwidth]{figures/covert/figure1.pdf}
-\end{frame}
-\begin{frame}
-  \frametitle{Aligned vs. non-aligned simulated data}
-\end{frame}
-\begin{frame}
-  \frametitle{Increase in gaze-independent decoding accuracy}
-\end{frame}
-
-\tocframe
-\section{\textbf{C3}: End-user case studies}
-\begin{frame}
-  \frametitle{Experimental setup}
+  \frametitle{Recap}
+  \begin{changemargin}
   \begin{itemize}
-    \item show setup
-    \item list participants
+    \item Visual, spatial ERP paradigm
+    \item 2 decoders exploiting spatiotemporal structure
+    \item Alignment decoder for gaze independence
+    \item Covert attention study with healthy subjects
+    \item Off-line study with eye-motor impaired patients
+  \end{itemize}
+  \end{changemargin}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Perspectives}
+  \begin{itemize}
+
+    \item on-line experiments
+    \item component separation
+    \item Improve and find other models that capture multi-component and
+      non-stationary aspect of covert VSA decoding
+
   \end{itemize}
 \end{frame}
-\begin{frame}
-  \frametitle{Impaired visual skills}
-  show table
-\end{frame}
-\begin{frame}
-  \frametitle{Gaze tracking analysis}
-  highlight specific gaze case
-\end{frame}
-\begin{frame}
-  \frametitle{Usability}
-  how many achieved higher than chance?
-\end{frame}
-\section{Conclusion}
-\begin{frame}
-\end{frame}
 
+%
+%%% BACKUP Slides ==============================================================
 
+%
+%% TODO: mathematics
+%\begin{frame}
+%  \frametitle{Experimental procedure \\ CVSA-ERP}
+%\end{frame}
+%\begin{frame}
+%  \frametitle{Experimental procedure \\ patient study}
+%\end{frame}
+%
+%\begin{frame}[c]
+%\frametitle{User-Centered Design}
+%
+%  \begin{minipage}[c]{.5\textwidth}
+%  \begin{tabular}{|l|l|}
+%    \hline
+%     & \emph{Principles} \\ \hline
+%     \emph{P1} & understand user, task, environment \\
+%     \emph{P2} & early and active user involvement \\
+%     \emph{P3} & driven by user-centered evaluation \\
+%     \emph{P4} & iterative design \\
+%     \emph{P5} & adress holistic experience \\
+%     \emph{P6} & multidisciplinary design \\
+%    \hline
+%  \end{tabular}
+%  \end{minipage}\hfill%
+%  \begin{minipage}[c]{.4\textwidth}
+%      TODO: schematic
+%  \end{minipage}
+%
+%\end{frame}
 \end{document}
