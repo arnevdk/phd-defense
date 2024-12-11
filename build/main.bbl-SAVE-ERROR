@@ -19,6 +19,84 @@
 
 \refsection{0}
   \datalist[entry]{nyt/global//global/global}
+    \entry{Arico2014}{article}{}
+      \name{author}{6}{}{%
+        {{un=0,uniquepart=base,hash=0787e4d3634afb01f642f0df5dceab4a}{%
+           family={Aricò},
+           familyi={A\bibinitperiod},
+           given={P.},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2e48a52b6dc4ad9ed7f8f68164fd2afd}{%
+           family={Aloise},
+           familyi={A\bibinitperiod},
+           given={F.},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=403813de3cf83333539ea026e73c7e52}{%
+           family={Schettini},
+           familyi={S\bibinitperiod},
+           given={F.},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0a20caec80dbffb444b7ff253761775e}{%
+           family={Salinari},
+           familyi={S\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ff705a987043c267115d5d97e6d36469}{%
+           family={Mattia},
+           familyi={M\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f841bba87cbf0f991da1982e9a05169c}{%
+           family={Cincotti},
+           familyi={C\bibinitperiod},
+           given={F.},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \list{publisher}{1}{%
+        {IOP Publishing}%
+      }
+      \strng{namehash}{f6aa0c836b65760062bf9aa0bbd0a40d}
+      \strng{fullhash}{32943e18dd9483d9264e46e08660a036}
+      \strng{bibnamehash}{f6aa0c836b65760062bf9aa0bbd0a40d}
+      \strng{authorbibnamehash}{f6aa0c836b65760062bf9aa0bbd0a40d}
+      \strng{authornamehash}{f6aa0c836b65760062bf9aa0bbd0a40d}
+      \strng{authorfullhash}{32943e18dd9483d9264e46e08660a036}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Objective. Several ERP-based brain–computer interfaces (BCIs) that can be controlled even without eye movements (covert attention) have been recently proposed. However, when compared to similar systems based on overt attention, they displayed significantly lower accuracy. In the current interpretation, this is ascribed to the absence of the contribution of short-latency visual evoked potentials (VEPs) in the tasks performed in the covert attention modality. This study aims to investigate if this decrement (i) is fully explained by the lack of VEP contribution to the classification accuracy; (ii) correlates with lower temporal stability of the single-trial P300 potentials elicited in the covert attention modality. Approach. We evaluated the latency jitter of P300 evoked potentials in three BCI interfaces exploiting either overt or covert attention modalities in 20 healthy subjects. The effect of attention modality on the P300 jitter, and the relative contribution of VEPs and P300 jitter to the classification accuracy have been analyzed. Main results. The P300 jitter is higher when the BCI is controlled in covert attention. Classification accuracy negatively correlates with jitter. Even disregarding short-latency VEPs, overt-attention BCI yields better accuracy than covert. When the latency jitter is compensated offline, the difference between accuracies is not significant. Significance. The lower temporal stability of the P300 evoked potential generated during the tasks performed in covert attention modality should be regarded as the main contributing explanation of lower accuracy of covert-attention ERP-based BCIs.}
+      \field{issn}{1741-2552}
+      \field{journaltitle}{J. Neural Eng.}
+      \field{month}{5}
+      \field{number}{3}
+      \field{title}{Influence of {P300} latency jitter on event related potential-based brain–computer interface performance}
+      \field{urlday}{23}
+      \field{urlmonth}{3}
+      \field{urlyear}{2023}
+      \field{volume}{11}
+      \field{year}{2014}
+      \field{urldateera}{ce}
+      \field{pages}{035008}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1088/1741-2560/11/3/035008
+      \endverb
+      \verb{file}
+      \verb IOP Full Text PDF:https\://iopscience.iop.org/article/10.1088/1741-2560/11/3/035008/pdf:application/pdf
+      \endverb
+    \endentry
     \entry{FriedOken2020}{article}{}
       \name{author}{5}{}{%
         {{un=0,uniquepart=base,hash=7733cd48cefe3ba5c9823c06b7239f8b}{%
@@ -78,6 +156,113 @@
       \range{pages}{11}
       \verb{doi}
       \verb 10.1080/17483107.2020.1754929
+      \endverb
+    \endentry
+    \entry{Mowla2017}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=dfca9665a03558d009fa8e10448d3412}{%
+           family={Mowla},
+           familyi={M\bibinitperiod},
+           given={Md\bibnamedelima Rakibul},
+           giveni={M\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e111d05de67b3360783a7421277c6719}{%
+           family={Huggins},
+           familyi={H\bibinitperiod},
+           given={Jane\bibnamedelima E.},
+           giveni={J\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=29b17d7d75653a44d0aba3e96d6e5c3a}{%
+           family={Thompson},
+           familyi={T\bibinitperiod},
+           given={David\bibnamedelima E.},
+           giveni={D\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Taylor \& Francis}%
+      }
+      \strng{namehash}{7384a0e989ab5486fe70f5284b33cdee}
+      \strng{fullhash}{844f3dc2d0ef4e667eb4df9a8fe70e67}
+      \strng{bibnamehash}{7384a0e989ab5486fe70f5284b33cdee}
+      \strng{authorbibnamehash}{7384a0e989ab5486fe70f5284b33cdee}
+      \strng{authornamehash}{7384a0e989ab5486fe70f5284b33cdee}
+      \strng{authorfullhash}{844f3dc2d0ef4e667eb4df9a8fe70e67}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Brain Computer Interfaces (BCIs) offer restoration of communication to those with the most severe movement impairments, but performance is not yet ideal. Previous work has demonstrated that latency jitter, the variation in timing of the brain responses, plays a critical role in determining BCI performance. In this study, we used Classifier-Based Latency Estimation (CBLE) and a wavelet transform to provide information about latency jitter to a second-level classifier. Three second-level classifiers were tested: least squares (LS), step-wise linear discriminant analysis (SWLDA), and support vector machine (SVM). Of these three, LS and SWLDA performed better than the original online classifier. The resulting combination demonstrated improved detection of brain responses for many participants, resulting in better BCI performance. Interestingly, the performance gain was greatest for those individuals for whom the BCI did not work well online, indicating that this method may be most suitable for improving performance of otherwise marginal participants.}
+      \field{issn}{2326-263X}
+      \field{journaltitle}{Brain-Computer Interfaces}
+      \field{month}{7}
+      \field{number}{3}
+      \field{title}{Enhancing {P300}-{BCI} performance using latency estimation}
+      \field{urlday}{4}
+      \field{urlmonth}{7}
+      \field{urlyear}{2023}
+      \field{volume}{4}
+      \field{year}{2017}
+      \field{urldateera}{ce}
+      \field{pages}{137\bibrangedash 145}
+      \range{pages}{9}
+      \verb{doi}
+      \verb 10.1080/2326263X.2017.1338010
+      \endverb
+      \verb{file}
+      \verb Full Text PDF:https\://www.tandfonline.com/doi/pdf/10.1080/2326263X.2017.1338010:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1080/2326263X.2017.1338010
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1080/2326263X.2017.1338010
+      \endverb
+      \keyw{Brain-Computer Interfaces (BCIs),P300 Speller,Classifier Based Latency Estimation (CBLE)}
+    \endentry
+    \entry{Phan2010}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=d2d54dad9b38d127c8e30e3950f0da17}{%
+           family={Phan},
+           familyi={P\bibinitperiod},
+           given={Anh\bibnamedelima Huy},
+           giveni={A\bibinitperiod\bibinitdelim H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=08ffe474d1c0bebee63a5696b8bc17dd}{%
+           family={Cichocki},
+           familyi={C\bibinitperiod},
+           given={Andrzej},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{2}{%
+        {Institute of Electronics, Information}%
+        {Communications Engineers (IEICE)}%
+      }
+      \strng{namehash}{f2aeea0c3c0916daf7091152eb6f7d0e}
+      \strng{fullhash}{69dc44e6c14c9756e6f318ade6ea8c09}
+      \strng{bibnamehash}{f2aeea0c3c0916daf7091152eb6f7d0e}
+      \strng{authorbibnamehash}{f2aeea0c3c0916daf7091152eb6f7d0e}
+      \strng{authornamehash}{f2aeea0c3c0916daf7091152eb6f7d0e}
+      \strng{authorfullhash}{69dc44e6c14c9756e6f318ade6ea8c09}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{2185-4106}
+      \field{journaltitle}{Nonlinear Theory and Its Applications, IEICE}
+      \field{number}{1}
+      \field{title}{Tensor decompositions for feature extraction and classification of high dimensional datasets}
+      \field{volume}{1}
+      \field{year}{2010}
+      \field{pages}{37\bibrangedash 68}
+      \range{pages}{32}
+      \verb{doi}
+      \verb https://doi.org/10.1587/nolta.1.37
       \endverb
     \endentry
     \entry{RonAngevin2019}{article}{}
@@ -157,11 +342,11 @@
       \list{publisher}{1}{%
         {BioMed Central}%
       }
-      \strng{namehash}{6ef2b5b301ebaf26fad68be9bd0c8b6b}
+      \strng{namehash}{22dbe01928681cc4e78edcfd03cc6509}
       \strng{fullhash}{6ef2b5b301ebaf26fad68be9bd0c8b6b}
-      \strng{bibnamehash}{6ef2b5b301ebaf26fad68be9bd0c8b6b}
-      \strng{authorbibnamehash}{6ef2b5b301ebaf26fad68be9bd0c8b6b}
-      \strng{authornamehash}{6ef2b5b301ebaf26fad68be9bd0c8b6b}
+      \strng{bibnamehash}{22dbe01928681cc4e78edcfd03cc6509}
+      \strng{authorbibnamehash}{22dbe01928681cc4e78edcfd03cc6509}
+      \strng{authornamehash}{22dbe01928681cc4e78edcfd03cc6509}
       \strng{authorfullhash}{6ef2b5b301ebaf26fad68be9bd0c8b6b}
       \field{sortinit}{T}
       \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
@@ -179,6 +364,174 @@
       \range{pages}{13}
       \verb{doi}
       \verb 10.1186/1744-9081-6-28
+      \endverb
+    \endentry
+    \entry{VanDenKerchove2022}{article}{}
+      \name{author}{4}{ul=2}{%
+        {{un=0,uniquepart=base,hash=1aea68a8516c36349f86672592bfd588}{%
+           family={Van\bibnamedelimb Den\bibnamedelima Kerchove},
+           familyi={V\bibinitperiod\bibinitdelim D\bibinitperiod\bibinitdelim K\bibinitperiod},
+           given={Arne},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f4b8ee8b9468c80a66f2e96eaf17d390}{%
+           family={Libert},
+           familyi={L\bibinitperiod},
+           given={Arno},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=44399ea3085b22a46f37fcdcc6a48667}{%
+           family={Wittevrongel},
+           familyi={W\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1458c662518270c9f8873bf04e011baa}{%
+           family={Van\bibnamedelima Hulle},
+           familyi={V\bibinitperiod\bibinitdelim H\bibinitperiod},
+           given={Marc\bibnamedelima M.},
+           giveni={M\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \list{publisher}{1}{%
+        {Multidisciplinary Digital Publishing Institute}%
+      }
+      \strng{namehash}{a3826b3bcb6638e9bcb1320e87ac4509}
+      \strng{fullhash}{237a1cc59e1831559fa19757378ccde2}
+      \strng{bibnamehash}{a3826b3bcb6638e9bcb1320e87ac4509}
+      \strng{authorbibnamehash}{a3826b3bcb6638e9bcb1320e87ac4509}
+      \strng{authornamehash}{a3826b3bcb6638e9bcb1320e87ac4509}
+      \strng{authorfullhash}{237a1cc59e1831559fa19757378ccde2}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The usability of EEG-based visual brain–computer interfaces (BCIs) based on event-related potentials (ERPs) benefits from reducing the calibration time before BCI operation. Linear decoding models, such as the spatiotemporal beamformer model, yield state-of-the-art accuracy. Although the training time of this model is generally low, it can require a substantial amount of training data to reach functional performance. Hence, BCI calibration sessions should be sufficiently long to provide enough training data. This work introduces two regularized estimators for the beamformer weights. The first estimator uses cross-validated L2-regularization. The second estimator exploits prior information about the structure of the EEG by assuming Kronecker–Toeplitz-structured covariance. The performances of these estimators are validated and compared with the original spatiotemporal beamformer and a Riemannian-geometry-based decoder using a BCI dataset with P300-paradigm recordings for 21 subjects. Our results show that the introduced estimators are well-conditioned in the presence of limited training data and improve ERP classification accuracy for unseen data. Additionally, we show that structured regularization results in lower training times and memory usage, and a more interpretable classification model.}
+      \field{issn}{2076-3417}
+      \field{journaltitle}{Applied Sciences}
+      \field{month}{1}
+      \field{number}{6}
+      \field{title}{Classification of {Event}-{Related} {Potentials} with {Regularized} {Spatiotemporal} {LCMV} {Beamforming}}
+      \field{urlday}{23}
+      \field{urlmonth}{9}
+      \field{urlyear}{2022}
+      \field{volume}{12}
+      \field{year}{2022}
+      \field{urldateera}{ce}
+      \field{pages}{2918}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.3390/app12062918
+      \endverb
+      \verb{urlraw}
+      \verb https://www.mdpi.com/2076-3417/12/6/2918
+      \endverb
+      \verb{url}
+      \verb https://www.mdpi.com/2076-3417/12/6/2918
+      \endverb
+      \keyw{brain–computer interface,event-related potential,beamforming,regularization}
+    \endentry
+    \entry{VanDenKerchovesubmitted}{article}{}
+      \name{author}{4}{ul=3}{%
+        {{un=0,uniquepart=base,hash=1aea68a8516c36349f86672592bfd588}{%
+           family={Van\bibnamedelimb Den\bibnamedelima Kerchove},
+           familyi={V\bibinitperiod\bibinitdelim D\bibinitperiod\bibinitdelim K\bibinitperiod},
+           given={Arne},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=96f2c6436161fc868735578ace99861f}{%
+           family={Si-Mohammed},
+           familyi={S\bibinithyphendelim M\bibinitperiod},
+           given={Hakim},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{un=2,uniquepart=given,hash=ce0625c51d0072471f4b3c48a1a2626d}{%
+           family={Van\bibnamedelima Hulle},
+           familyi={V\bibinitperiod\bibinitdelim H\bibinitperiod},
+           given={Marc},
+           giveni={M\bibinitperiod},
+           givenun=2}}%
+        {{un=0,uniquepart=base,hash=eef031a5e9cd21e38c08b7d34d88116f}{%
+           family={Cabestaing},
+           familyi={C\bibinitperiod},
+           given={François},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{0511f1a1e7f39b43e56cd96cbe4bcf44}
+      \strng{fullhash}{ac294b46c2ff30f7262c44a893207b04}
+      \strng{bibnamehash}{0511f1a1e7f39b43e56cd96cbe4bcf44}
+      \strng{authorbibnamehash}{0511f1a1e7f39b43e56cd96cbe4bcf44}
+      \strng{authornamehash}{0511f1a1e7f39b43e56cd96cbe4bcf44}
+      \strng{authorfullhash}{ac294b46c2ff30f7262c44a893207b04}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Neural Engineering}
+      \field{title}{Block-Term Tensor Discriminant Analysis for Brain-Computer Interfacing}
+      \field{year}{submitted}
+    \endentry
+    \entry{VanDenKerchove2024}{article}{}
+      \name{author}{4}{ul=3}{%
+        {{un=0,uniquepart=base,hash=1aea68a8516c36349f86672592bfd588}{%
+           family={Van\bibnamedelimb Den\bibnamedelima Kerchove},
+           familyi={V\bibinitperiod\bibinitdelim D\bibinitperiod\bibinitdelim K\bibinitperiod},
+           given={Arne},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=96f2c6436161fc868735578ace99861f}{%
+           family={Si-Mohammed},
+           familyi={S\bibinithyphendelim M\bibinitperiod},
+           given={Hakim},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{un=2,uniquepart=given,hash=1a20bfd3166060969803a371ded5b3c1}{%
+           family={Van\bibnamedelima Hulle},
+           familyi={V\bibinitperiod\bibinitdelim H\bibinitperiod},
+           given={MM},
+           giveni={M\bibinitperiod},
+           givenun=2}}%
+        {{un=0,uniquepart=base,hash=eef031a5e9cd21e38c08b7d34d88116f}{%
+           family={Cabestaing},
+           familyi={C\bibinitperiod},
+           given={François},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {IOP Publishing}%
+      }
+      \strng{namehash}{ac323f3fb9245b95f9273e573c8f9fce}
+      \strng{fullhash}{fb1d6810eb47f327404053b9582b7a67}
+      \strng{bibnamehash}{ac323f3fb9245b95f9273e573c8f9fce}
+      \strng{authorbibnamehash}{ac323f3fb9245b95f9273e573c8f9fce}
+      \strng{authornamehash}{ac323f3fb9245b95f9273e573c8f9fce}
+      \strng{authorfullhash}{fb1d6810eb47f327404053b9582b7a67}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1741-2552}
+      \field{journaltitle}{J. Neural Eng.}
+      \field{month}{7}
+      \field{number}{4}
+      \field{title}{Correcting for ERP latency jitter improves gaze-independent BCI decoding}
+      \field{volume}{21}
+      \field{year}{2024}
+      \field{pages}{046013}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1088/1741-2552/ad5ec0
       \endverb
     \endentry
   \enddatalist
