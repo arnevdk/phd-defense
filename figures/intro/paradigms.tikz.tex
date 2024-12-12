@@ -14,12 +14,12 @@
     % Draw rectangles
     \draw[draw=accent1, fill=white, very thick] ({-\margin}, \margin) rectangle (-1,1);
     \draw[draw=accent2, fill=white, very thick] (\margin, \margin) rectangle (1,1);
-    \draw[draw=accent3, fill=white, very thick] (-1, {-\margin}) rectangle (1,-1);
+    \draw[draw=accent3!50, fill=white, very thick] (-1, {-\margin}) rectangle (1,-1);
 
     %% Add text
-    \node[color=accent1, align=left,font=\bfseries, anchor=north west, inner sep=2pt] at  (-1,1){active};
-    \node[color=accent2, align=left,font=\bfseries, anchor=north east, inner sep=2pt] at  (1,1){reactive};
-    \node[color=accent3, align=left,font=\bfseries, anchor=south west, inner sep=2pt] at  (-1,-1){passive};
+    \node[color=accent1, align=left,font=\bfseries, anchor=north west, inner sep=2pt] at  (-1,1){Active};
+    \node[color=accent2, align=left,font=\bfseries, anchor=north east, inner sep=2pt] at  (1,1){Reactive};
+    \node[color=accent3!50, align=left,font=\bfseries, anchor=south west, inner sep=2pt] at  (-1,-1){Passive};
 
     \node[color=mydarkgray, align=center,font=\bfseries, anchor=north] at
     (0,{-(1+\margin)}) {passive\\participation};
@@ -43,6 +43,6 @@
     %\node[align=center] at ({-\center}, {-\center+\textspacing}) {attention and \\ workload detection};
     %\node[align=center] at ({-\center}, {-\center-\textspacing}) {clinical neuroimaging \\ and monitoring};
     %\node[align=center] at ({+\center}, {-\center-\textspacing})  {emotion \\ detection};
-    \node[align=center] at (0, {-\center})  {$\cdots$};
+    %\node[align=center] at (0, {-\center})  {$\cdots$};
   %\end{scope}
 \end{tikzpicture}

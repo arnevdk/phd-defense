@@ -29,9 +29,9 @@
      showgrid="false"
      units="px"
      width="1100px"
-     inkscape:zoom="1.2616792"
-     inkscape:cx="302.7711"
-     inkscape:cy="264.72656"
+     inkscape:zoom="2.5233584"
+     inkscape:cx="126.61697"
+     inkscape:cy="238.17465"
      inkscape:window-width="2560"
      inkscape:window-height="1371"
      inkscape:window-x="1920"
@@ -392,7 +392,7 @@
            id="path20"
            sodipodi:nodetypes="sccccccccccccccccccccccccccccss" /><g
            id="g5"
-           transform="matrix(0.61449074,0,0,0.61449074,-20.109981,-56.713191)"
+           transform="matrix(0.61449074,0,0,0.61449074,-22.226649,-56.713191)"
            style="opacity:1"><g
              id="g8"
              inkscape:path-effect="#path-effect8"
@@ -560,7 +560,7 @@
                    d="m 257.2236,157.56533 6.86215,0.80569 -0.96451,7.31693 -6.94214,-0.97119 z"
                    inkscape:original-d="m 257.92245,155.73412 h 5.82084 v 6.35 h -5.82084 z" /></g></g></g></g><path
            style="opacity:1;fill:none;stroke:#8d807a;stroke-width:0.499999;stroke-opacity:1;marker-end:url(#TriangleOutM);paint-order:stroke fill markers"
-           d="m 22.363021,41.570736 v -10.87778 h 5.062096"
+           d="m 22.363021,47.44254 0,-16.749584 h 5.062096"
            id="path17"
            sodipodi:nodetypes="ccc" /><path
            style="opacity:1;fill:none;stroke:#8d807a;stroke-width:0.499999;stroke-opacity:1;marker-end:url(#TriangleOutM);paint-order:stroke fill markers"
@@ -571,8 +571,8 @@
            d="m 108.02844,30.692956 h 11.42904"
            id="path25"
            sodipodi:nodetypes="cc" /><path
-           style="fill:none;stroke:#8d807a;stroke-width:0.5;stroke-dasharray:4, 0.5;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#TriangleOutM);paint-order:stroke fill markers;opacity:1"
-           d="m 133.22085,60.604899 v 7.798334 H 84.946737"
+           style="opacity:1;fill:none;stroke:#8d807a;stroke-width:0.5;stroke-dasharray:4, 0.5;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#TriangleOutM);paint-order:stroke fill markers"
+           d="m 133.22085,48.77187 0,19.631363 -56.891381,0"
            id="path26"
            sodipodi:nodetypes="ccc" /><text
            xml:space="preserve"
