@@ -25,14 +25,10 @@
 \begin{frame}
   \frametitle{The Locked-in Syndrome}
   \centering
-
-  \begin{minipage}[c]{.5\textwidth}
-    \includegraphics[width=\textwidth]{figures/intro/damien-obfuscated.jpg}
-  \end{minipage}\hfill%
   \begin{minipage}[c]{.4\textwidth}
+    \small
     \raggedright
-    Paralysis with impaired speech:
-    the \emph{Locked-in Syndrome}
+    Complete paralysis, \\ \emph{impaired communication}
     \bigskip
 
     Due to
@@ -44,12 +40,46 @@
     \end{itemize}
     \bigskip
 
-  Communication requires \\ \emph{assistive technology}
+  Assistive technology
   \bigskip
 
-  What if muscle control is insufficient?
+  A Brain-Computer Interface (BCI) bypasses muscle activity
+
+ \end{minipage}\hfill%
+  \begin{minipage}[c]{.5\textwidth}
+    \includegraphics[width=\textwidth]{figures/intro/damien.pdf}
   \end{minipage}
 \end{frame}
+\begin{frame}[noframenumbering]
+  \frametitle{The Locked-in Syndrome}
+  \centering
+  \begin{minipage}[c]{.4\textwidth}
+    \small
+    \raggedright
+    Complete paralysis, \\ \emph{impaired communication}
+    \bigskip
+
+    Due to
+    \begin{itemize}
+      \item Stroke
+      \item Traumatic brain injury
+      \item Neurodegenerative diseases
+      \item \ldots
+    \end{itemize}
+    \bigskip
+
+  Assistive technology
+  \bigskip
+
+    A \emph{Brain-Computer Interface} (BCI) bypasses muscle activity
+
+ \end{minipage}\hfill%
+  \begin{minipage}[c]{.5\textwidth}
+    \includegraphics[width=\textwidth]{figures/intro/damien_annot.pdf}
+  \end{minipage}
+\end{frame}
+
+
 
 
 \note{%
@@ -61,6 +91,7 @@
     \item improve QoL
     \item like eye tracker or muscle controlled switch, depending on residual
       control and impairment cannot always use this
+    «
 
   \end{itemize}
 }
@@ -79,13 +110,13 @@
   \centering
   \huge
   How can we optimize \emph{BCI}  assistive technology design  to make it more
-    \emph{efficient} and  \emph{inclusive}?
+    \emph{efficient} and  \emph{accessible}?
   \end{minipage}
 
 \end{frame}
 
 \note{
-  inclusive: more people can use it
+  accessible: more people can use it
 }
 
 
@@ -93,7 +124,13 @@
 % =============================================================================
 
 \outline{BCI design}{figures/outline_design.pdf}
-\outline{BCI design}{figures/outline.pdf}
+{
+  \setbeamercolor{background canvas}{bg=mylightgray}
+  \begin{frame}
+  \frametitle{BCI design}
+    \schema{figures/outline.pdf}
+  \end{frame}
+}
 
 \begin{frame}[c]
   \frametitle{Recording the brain activity}
@@ -113,7 +150,7 @@
 
 
 
-\begin{frame}
+\begin{frame}[c]
   \frametitle{BCI paradigms for communication}
   \begin{minipage}[c]{.5\textwidth}
     \footnotesize
@@ -128,21 +165,21 @@
       \emph[accent1]{Active} BCIs
       \begin{itemize}
         \footnotesize
-        \item[\textcolor{mygreen}{+}] Intuitive, self-paced
-        \item[\textcolor{myred}{--}] High speed requires invasive
+        \item[\textcolor{mygreen}{+}] Natural
+        \item[\textcolor{myred}{--}] Invasive for high speed
       \end{itemize}
-      \smallskip
+      \bigskip
 
-      \emph[accent2]{Reactive} BCIs decode reactions to attended stimuli%
+      \emph[accent2]{Reactive}
       \begin{itemize}
         \footnotesize
-        \item[\textcolor{myred}{--}] Less intuitive
+        \item[\textcolor{myred}{--}] Continuous stimulation
         \item[\textcolor{mygreen}{+}] Fast stimulation
         \item[\textcolor{mygreen}{+}] Suited for EEG
       \end{itemize}
-      \smallskip
+      \bigskip
 
-      \emph{Visual reactive} BCIs are a good candidate.
+      Fast communication with \\ \emph{visual reactive} paradigm
     }
 \end{frame}
 \note{%
@@ -155,7 +192,7 @@
 }
 
 \begin{frame}
-  \frametitle{The visual event-related potential  paradigm}
+  \frametitle{The visual event-related potential (ERP)  paradigm}
   \begin{minipage}[c]{.4\textwidth}
     \includegraphics[width=\textwidth]{figures/intro/oddball.pdf}
     \smallskip
@@ -192,66 +229,40 @@
 
 % =============================================================================
 
-\outline{\emph{C1.} Spatiotemporal ERP decoding}{figures/outline_decode.pdf}
+\outline{\emph{C1.} Spatial-temporal ERP decoding}{figures/outline_decode.pdf}
 \begin{frame}[c]
   \frametitle{\emph{Problem:} ERP responses can be difficult to extract}
   \begin{minipage}[c]{.5\textwidth}
 
-    Low single-trial signal-to-noise ratio
+    Strong noise \ergo machine learning decoders
     \begin{itemize}
-      \item Machine learning models must be \\ trained to decode ERPs
+      \itemnega High number of features
+      \itemnega Low sample size for short calibration
     \end{itemize}
     \bigskip
 
-    Each response is a sample with \\
-    \# features $=$ \# channels $\times$ \# time points
+    \emph{Solution}: incorporate original \\ data structure
     \begin{itemize}
-      \item High number of features \\ (channels $\times$ times)
-      \item Short calibration time \\ results in low sample size
+      \itemposi Regularization
+      \itemposi Fast training
     \end{itemize}
-    \bigskip
 
+
+  \end{minipage}\hfill%
+  \begin{minipage}[c]{.4\textwidth}
     \centering
-    \emph{\# features $>>$ \# samples}
 
-  \end{minipage}\hfill%
-  \begin{minipage}[c]{.4\textwidth}
-    \raggedleft
+    \emph{Data}\smallskip
 
-    \includegraphics[width=\textwidth]{figures/bttda/tensor_st.pdf}
+    \includegraphics[width=\textwidth]{figures/decode/epoch.pdf}
+
+    \downarrow\smallskip
+
+    \emph{Features}\smallskip
+
+    \includegraphics[width=.9\textwidth]{figures/decode/features.pdf}
 
   \end{minipage}
-\end{frame}
-
-\begin{frame}[c]
-  \frametitle{Retaining space-time structure enhances performance}
-  \bigskip
-
-  \begin{minipage}[c]{.5\textwidth}
-    Data are ususally flattened \\ before classification
-    \begin{itemize}
-      \item   ignores channel-time point structure
-    \end{itemize}
-  \end{minipage}\hfill%
-  \begin{minipage}[c]{.4\textwidth}
-    \vfill
-    \raggedleft
-    \includegraphics[width=.9\textwidth]{figures/bttda/tensor_flat.pdf}
-  \end{minipage}
-  \bigskip
-  \bigskip
-
-  \begin{minipage}[c]{.5\textwidth}
-    Assumptions on \emph{data structure}
-    \begin{itemize}
-      \item yield strong regularization
-      \item speed up training
-    \end{itemize}
-  \end{minipage}\hfill%
-  \begin{minipage}[c]{.4\textwidth}
-    \includegraphics[width=\textwidth]{figures/bttda/tensor_st.pdf}
-  \end{minipage}
-
 \end{frame}
 
 \begin{frame}[c]
@@ -271,20 +282,19 @@
     \end{minipage}
   \end{minipage}\hfill
   \aside{
-    Linear decoders require covariance estimation and inversion
+    Linear decoders require covariance estimation
     \bigskip
 
-    Imprecise due to high dimensionality
+    Imprecise due to high number of features
     \bigskip
 
-    Repetitive structure can be expressed as separate space and
-    time covariance
+    Repetitive structure in channels and time
     \bigskip
 
-    Saves computation time and improves accuracy for low data
-    availability
+    Fast computation
+    \bigskip
 
-
+    Improvement for short calibration time
 
   }
 
@@ -292,50 +302,51 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Tensor feature extraction {\tiny\cite{VanDenKerchovesubmitted}}}
+  \frametitle{Spatial-temporal feature extraction}
 
   \begin{minipage}[t]{.35\linewidth}
-    Tensor discriminant analysis
-    \bigskip
-
 		\centering
 		\begin{tikzpicture}[y=-1cm]
 			\begin{scope}[shift={(-1,0)}]
-        \TensorThree{$\ten{X}$}{\rotatebox{90}{\small channels}}{\small times}{}{2}{2}{1}
+        \TensorThree{$\ten{X}$}{\rotatebox{90}{\small channels}}{\small time points}{}{2}{2}{0}
 				\node at (3.2,.5, 2) {$\rightarrow$};
 				\begin{scope}[shift={(3.25,0.25)}]
-					\TensorThree{$\ten{G}$}{}{}{}{1}{1}{1}
+					\TensorThree{$\ten{G}$}{}{}{}{1}{1}{0}
 				\end{scope}
 				\node at (4.2,1.25, 2) {$\downarrow$};
 				\begin{scope}[shift={(3,2)}]
-					\TensorTwo{\textit{clf}}{}{}{1.5}{.5}
+					\TensorTwo{classifier}{}{}{1.5}{.5}
 				\end{scope}
 			\end{scope}
     \end{tikzpicture}
+    \bigskip
+
+    \raggedright\small
+    Directly operates on structured data
+    \begin{itemize}
+      \item Extract features separately in space and time
+    \end{itemize}
     {\tiny\cite{Phan2010}}
 	\end{minipage}\hfill%
   \vrule\hfill%
   \begin{minipage}[t]{.55\textwidth}
-    Block-term tensor discriminant analysis
-    \bigskip
-
     \centering
 		\begin{tikzpicture}[y=-1cm]
 			\begin{scope}[shift={(-1,0)}]
-				\TensorThree{$\ten{X}$}{}{}{}{2}{2}{1}
+				\TensorThree{$\ten{X}$}{}{}{}{2}{2}{0}
 				\node at (3.2,.5, 2) {$\rightarrow$};
 				\begin{scope}[shift={(3.25,0.25)}]
-					\TensorThree{$\ten{G}^{(1)}$}{}{}{}{1}{1}{1}
+					\TensorThree{$\ten{G}^{(1)}$}{}{}{}{1}{1}{0}
 				\end{scope}
 				\node at (5.75,.5,2) {$,\cdots,$};
 				\begin{scope}[shift={(6.25,0.25)}]
-					\TensorThree{$\ten{G}^{(B)}$}{}{}{}{1}{1}{1}
+					\TensorThree{$\ten{G}^{(B)}$}{}{}{}{1}{1}{0}
 				\end{scope}
 				\node at (4.2,1.25, 2) {$\downarrow$};
 				\node at (5.7,1.25, 2) {$\downarrow$};
 				\node at (7.2,1.25, 2) {$\downarrow$};
 				\begin{scope}[shift={(3,2)}]
-					\TensorTwo{\textit{clf}}{}{}{4.5}{.5}
+					\TensorTwo{classifier}{}{}{4.5}{.5}
 				\end{scope}
 			\end{scope}
     \end{tikzpicture}
@@ -347,16 +358,19 @@
       \smallskip
 
       \posi\ \ Retains structure
+      \smallskip
+
+      {\tiny\cite{VanDenKerchovesubmitted}}
     \end{minipage}\hfill%
     \begin{minipage}[t]{.5\textwidth}
       \small\raggedright
       \nega\ \ More parameters
       \smallskip
 
-      Heuristic model selection
+      \ergo Heuristic model selection
       \smallskip
 
-      Validated with 4 open datasets
+      Validated with 4 open datasets, improvement over base model
     \end{minipage}
   \end{minipage}
 
@@ -369,7 +383,7 @@
 
 % =============================================================================
 
-\outline{\emph{C2.} Gaze-independence}{figures/outline_gaze.pdf}
+\outline{\emph{C2.} Eye movement independence}{figures/outline_gaze.pdf}
 
 
 \begin{frame}
@@ -377,20 +391,22 @@
 
   \begin{minipage}[c]{.4\textwidth}
     \raggedright
-    \emph{Visual skills} related to disease \\ affect BCI
-    operation
+    Impairment affects BCI operation
     {\tiny\cite{FriedOken2020}}
-  {\small
-  \begin{itemize}
-    \item Discomfort fixating
-    \item Restricted movement
-    \item Involuntary movements
-  \end{itemize}
-  }
-  \bigskip
+    {\small
+    \begin{itemize}
+      \footnotesize
+      \item Discomfort fixating
+      \item Restricted movement
+      \item Involuntary movements
+    \end{itemize}
+    }
+    No direct gaze
+    \bigskip
+    \bigskip
 
-  Decoding relies on \emph{visual ERP} components {\tiny\cite{Treder2010}}
-	\end{minipage}\hfill%
+    Decoding relies on \emph{visual ERP} components \\ {\tiny\cite{Treder2010}}
+  \end{minipage}\hfill%
   \begin{minipage}[c]{.4\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{figures/intro/covert_performance_drop/brunner_2010_line.png}
@@ -412,65 +428,52 @@
 
 
 \begin{frame}
-  \frametitle{Covert visuospatial attention experiment}
-
-  \begin{minipage}{.6\textwidth}
+  \frametitle{Covert visuospatial attention experiment \\
+    {\tiny\cite{VanDenKerchove2024}}}
     \centering
+    \small
 
-    \begin{minipage}[t]{.45\textwidth}
+
+    \hfill
+    \begin{minipage}[c]{.25\textwidth}
     \input{figures/covert/interface_3.tikz.tex}
+      Hex-o-Spell {\tiny\cite{Treder2010}}
     \end{minipage}\hfill%
-    \begin{minipage}[t]{.45\textwidth}
+    \begin{minipage}[c]{.35\textwidth}
       \includegraphics[width=\textwidth]{figures/covert/timeline.pdf}
     \end{minipage}
-    \bigskip
-    \bigskip
+    \hfill%
     \bigskip
 
 
-    {\small
+    \centering
+    \begin{minipage}{.6\textwidth}
     \begin{minipage}{.3\textwidth}
-      Overt VSA
+      overt
       \smallskip
 
       \includegraphics[width=\textwidth]{figures/covert/attention_overt.pdf}
     \end{minipage}\hfill%
     \begin{minipage}{.3\textwidth}
-      Covert VSA
+      covert
       \smallskip
 
       \includegraphics[width=\textwidth]{figures/covert/attention_covert.pdf}
     \end{minipage}\hfill%
     \begin{minipage}{.3\textwidth}
       \small
-      Split VSA
+      Split
       \smallskip
 
       \includegraphics[width=\textwidth]{figures/covert/attention_split.pdf}
     \end{minipage}%
-  }
-  \end{minipage}\hfill
+    \end{minipage}
 
-  \aside{%
-    \small
-    \raggedright
-    CVSA-ERP dataset
-    \begin{itemize}
-      \item 15 subjects, $\pm$ 11h stimulation
-      \item Hex-o-Spell interface \\ {\tiny\cite{Treder2010}}
-      \item Discrete gaze-\\independence conditions
-    \end{itemize}
-    \raggedright
-    {\tiny\cite{VanDenKerchove2024}}
-  }
 \end{frame}
-\note{
-  Hex-o-Spell optimized for gaze-independence
-}
 
 \begin{frame}
   \frametitle{Evoked ERP components}
-  \small
+  \footnotesize
   \begin{minipage}[t]{.45\textwidth}
     \includegraphics[width=.2\textwidth]{figures/covert/attention_overt.pdf}
     \hspace{.5em}
@@ -478,11 +481,14 @@
     \smallskip
 
     \includegraphics[width=\textwidth]{figures/covert/erps/erp_overt_cluster-1.pdf}
+    Attention-based P3 (central-parietal)
+    \bigskip
+
     \includegraphics[width=\textwidth]{figures/covert/erps/erp_overt_cluster-0.pdf}
+    Visual early components (occipital)
     \smallskip
 
-    \small
-    F-statistic cluster-based permutation \\ tests, target vs. non-target
+    F-statistic cluster-based permutation tests
   \end{minipage}\hfill%
   \begin{minipage}[t]{.45\textwidth}
     \includegraphics[width=.2\textwidth]{figures/covert/attention_covert.pdf}
@@ -506,7 +512,7 @@
 
 %% =============================================================================
 
-\outline{\emph{C3.} Gaze-independent decoding}{figures/outline_decode.pdf}
+\outline{\emph{C3.} Eye movement independent decoding}{figures/outline_decode.pdf}
 
 \begin{frame}[c]
   \frametitle{\emph{Problem:} Latency jitter decreases performance \\ in covert and split
@@ -524,14 +530,12 @@
 
     \input{figures/covert/jitter.pgf}
     }}
-    \smallskip
 
     \begin{itemize}
-      \item Classifier-based latency estimation {\tiny\cite{Mowla2017}}
-      \item Jitter of discriminative information is higher
-        for gaze-independent settings
-      \item Contributes to low accuracy {\tiny\cite{Arico2014}}
-      \item \emph{Can this be exploited?}
+      %\item Classifier-based latency estimation {\tiny\cite{Mowla2017}}
+      \item Higher jitter when eye movement independent
+      \item Contributes to low accuracy \\ {\tiny\cite{Arico2014}}
+      \item Can this be \emph{accounted for}?
     \end{itemize}
 
   \end{minipage}
@@ -542,7 +546,6 @@
 }
 
 \begin{frame}
-  \frametitle{Latency estimation and alignment}
   \frametitle{Latency estimation and alignment}
   \begin{minipage}{.3\textwidth}
     \emph{Before} alignment
@@ -556,35 +559,40 @@
 
     \includegraphics[height=1.3\textwidth]{figures/covert/split_p3_latency_subject_aligned.pdf}
   \end{minipage}
-  \aside{
-    Developed iterative method based on CBLE
+  \aside{%
+    Developed enhanced ERP latency estimation method
+    {\tiny\cite{VanDenKerchove2024,Mowla2017}}
     \bigskip
 
-    Enhances latency estimagion and SNR in simulated data
+    Iterative alignment
     \bigskip
 
-    Does this transfer to real data?
+    Alignment improves SNR in simulated data
+    \bigskip
+
+    Transfer to real data?
   }
 \end{frame}
 
 
 \begin{frame}
-  \frametitle{Application to gaze-independent decoding}
+  \frametitle{Application to eye movement independent \\ decoding}
   \begin{minipage}{.6\textwidth}
     \centering
     \includegraphics[width=\textwidth]{figures/covert/roc_auc_diff.pdf}
   \end{minipage}\hfill
   \aside{%
-    Iterative CBLE can function with unseen data and is applicable as decoder
+    Applicable as decoder
     \bigskip
 
-    Within-subject, cross-validated single-trial ROC-AUC (\%)
+    Within-subject, cross-validated single-trial evaluation (ROC-AUC), 2 datasets
     \bigskip
 
-    Within and across VSA conditions to establish independence
+    Compared with state-\\of-the art decoders \\
+    {\tiny\cite{Mowla2017,Sosulski2022}}
     \bigskip
 
-    Improves decoding performance in gaze-independent settings
+    Improves decoding performance independent from eye movement
 
 
   }
@@ -633,6 +641,7 @@
     \centering
     Large \emph{individual variety} in preserved skills
     \bigskip
+    \bigskip
 
     \hfill
     \includegraphics[height=.075\textwidth]{figures/logos/uz_leuven.jpg}
@@ -646,7 +655,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Off-line covert vsa experiment}
+  \frametitle{Covert visuospatial attention experiment}
 
   \begin{minipage}{.6\textwidth}
     \includegraphics[height=.45\textwidth]{figures/patients/PD01a-obfuscated.jpg}%
@@ -685,10 +694,10 @@
     Adapted stimulation parameters
     \bigskip
 
-    Few studies investigating VSA abilities of end-users
+    Few studies investigating abilities
     \bigskip
 
-    Replace \textit{split} by \textit{free} to study comfort
+    Replace \textit{split} by natural \textit{free}
 
   }
 
@@ -701,13 +710,11 @@
     \includegraphics[width=.8\textwidth]{figures/patients/fig_gaze.pdf}
   \end{minipage}
   \aside{
-    Most prefered to perform overt VSA
+    Most prefered to perform overtly
     \bigskip
 
-    Voluntary covert and split VSA did occur
-    \bigskip
+    Voluntary covert and split did occur
 
-    Portable eye tracker not always suited
 
   }
 \end{frame}
@@ -730,28 +737,24 @@
     Covert was lower than overt, free generally on par
     \bigskip
 
-    Limited impact of gaze-independent decoding
-    \bigskip
-
-    Contribution of gaze, break with limits of overt and covert
-
+    Contribution of eye movement
   }
 \end{frame}
 
 \begin{frame}
   \frametitle{Recap}
-  \begin{enumerate}
-    \item Visual, spatial ERP paradigm
+  Visual ERP paradigm
+  \begin{itemize}
     \bigskip
-    \item 2 decoders exploiting spatiotemporal structure
+  \item[\emph{C1:}] Decoders exploiting spatial-temporal structure
     \bigskip
-    \item Covert attention study with healthy subjects
+  \item[\emph{C2:}] Covert attention study with healthy subjects
     \bigskip
-    \item Iterative alignment decoder for gaze independence
+  \item[\emph{C3:}] Decoder for eye movement independence \\ accounting for jitter
     \bigskip
-    \item Off-line study with eye-motor impaired patients
-  \end{enumerate}
-  \aside{
+  \item[\emph{C4:}] Validation with eye movement impaired subjects
+  \end{itemize}
+  \aside{%
     Publications
   }
 \end{frame}
@@ -760,13 +763,12 @@
     \frametitle{Conclusions}
     \begin{changemargin}
     \begin{itemize}
-      \item Improved decoders enhance BCI \emph{efficiency}.
+      \item Improved decoders enhance BCI \emph{efficiency}
       \bigskip
-      \item Applications to gaze-independent decoding improve \emph{inclusivity}.
+      \item Improvements in gaze independent decoding improve
+        \emph{accessibility} for some
       \bigskip
-      \item Limited effect on end-users
-      \bigskip
-      \item Gained insight in requirements of BCI users with gaze-impairment
+      \item Gained insight in requirements of BCI users with impaired eye movement
     \end{itemize}
   \end{changemargin}
 \end{frame}
@@ -774,16 +776,15 @@
 \begin{frame}
   \frametitle{Perspectives}
   \begin{changemargin}
-    \begin{itemize}
-     \item Models capturing multi-component and
-       non-stationary aspect of (covert) ERPs
+    \begin{enumerate}
+     \item Integrate BCI and eye-tracking \\ for impaired eye movement
      \bigskip
      \item On-line experiments
      \bigskip
-     \item User experience study
+     \item User-centered design study
      \bigskip
-     \item Integrate EEG and eye-tracking
-     \bigskip
+     \item Models capturing multi-component and
+       non-stationary aspect of (covert) ERPs
   \end{itemize}
   \end{changemargin}
 \end{frame}
@@ -792,11 +793,15 @@
   experience study
 }
 
-\begin{frame}
-  \frametitle{Q\&A}
+{
 
-  \centering
+  \setbeamercolor{background canvas}{bg=mylightgray}
+\begin{frame}[b]
+  \frametitle{Q\&A}
+  \hfill \includegraphics[width=.2\textwidth]{figures/logos/logo.png}
+
 \end{frame}
+}
 %
 %%% BACKUP Slides ==============================================================
 
@@ -835,7 +840,15 @@
   model selection procedure
 \end{frame}
 
-\begin{frame}
+\begin{frame}[noframenumbering]
+ WCBLE training procedure
+\end{frame}
+
+\begin{frame}[noframenumbering]
+  WCBLE test procedure
+\end{frame}
+
+\begin{frame}[noframenumbering]
   \frametitle{Subjects with physical, speech and gaze impairment}
 
   \begin{tabular}{@{}l|lrlrl@{}}
@@ -854,8 +867,8 @@
 
 
 
-\begin{frame}
-  \frametitle{Eye motor impairment}
+\begin{frame}[noframenumbering]
+  \frametitle{Visual skill and eye movement impairment}
   \newcommand{\skill}{}
   \newcommand{\noskill}{x}
   \newcommand{\snoskill}{o}
@@ -867,7 +880,9 @@
     \small Ocular motility         & \skill   & \noskill & \skill    & \noskill & \snoskill & \snoskill & \noskill\\
     \small Binocular vision        & \skill   & \skill   & \skill    & \skill   & \noskill  & \snoskill & \snoskill \\
     \small Field of vision         & \skill   & \skill   & \skill    & \skill   & \skill    & \noskill  & \noskill \\
-    \small Involuntary movement    & \skill   & \noskill & \snoskill  & \noskill &  \noskill  & \noskill  & \skill \\
+    \small Involuntary movement    & \skill   & \noskill & \snoskill  &
+    \noskill &  \noskill  & \noskill  & \skill \\ \hline
+  Visual acuity (logMAR)  & 0.0      & 0.0      & 0.6       & 0.2      & 0.0       & 0.7  & 0.6\\
   \end{tabular}
   \bigskip
 
