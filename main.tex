@@ -236,16 +236,30 @@
   \frametitle{Covariance matrix regularization \\
   {\tiny\cite{VanDenKerchove2022}}}
   \begin{minipage}[c]{.3\textwidth}
-  \includegraphics[width=\textwidth]{figures/decode/emp_cov_label.png}
+  \includegraphics[width=\textwidth]{figures/decode/emp_cov.pdf}
+
+    \tiny
+    $$(20 \times 17) \times (20 \times 17) = 115600 $$
   \end{minipage}
-  $=$
+  $=$\hspace{.3em}
   \begin{minipage}[c]{.3\textwidth}
     \begin{minipage}[c]{.4\textwidth}
-      \includegraphics[width=\textwidth]{figures/decode/sp_cov_2.png}
+      \vspace{2.1em}
+      \includegraphics[width=\textwidth]{figures/decode/sp_cov_2.pdf}
+
+      \vspace{-.5em}
+      \tiny
+      $$20 \times 20 = 400$$
     \end{minipage}
-  $\otimes$
+    $\otimes$\hspace{.3em}
     \begin{minipage}[c]{.4\textwidth}
-      \includegraphics[width=\textwidth]{figures/decode/tmp_cov_2.png}
+      \vspace{2.1em}
+      \includegraphics[width=\textwidth]{figures/decode/tmp_cov_2.pdf}
+
+      \vspace{-.5em}
+      \tiny
+      $$17\times17 = 289 $$
+
     \end{minipage}
   \end{minipage}\hfill
   \aside{
@@ -258,10 +272,10 @@
     Repetitive structure in channels and time
     \bigskip
 
-    Fast computation
+    Lightweight computation
     \bigskip
 
-    Improvement for short calibration time
+    LCMV-beamformer and LDA: improvement for short calibration time \\ {\tiny\cite{Wittevrongel2017}}
 
   }
 
@@ -556,7 +570,7 @@
     {\tiny\cite{Sosulski2022}}
     \bigskip
 
-    Improves decoding performance if no gaze
+    Improves covert and split decoding performance
 
 
   }
@@ -569,6 +583,11 @@
 \begin{frame}
   \frametitle{Participants with physical, speech and eye movement
   impairment}
+
+    Large \emph{individual variety} in preserved skills
+
+    \vfill
+
 
     \hfill
     \begin{minipage}[t]{.3\textwidth}
@@ -587,20 +606,15 @@
         \end{itemize}
     \end{minipage}\hfill%
     \begin{minipage}[t]{.3\textwidth}
-      3 brain stem or cerebellar \emph{stroke}
+      3 brain stem or cerebellar \\ \emph{stroke}
        \begin{itemize}
           \item no speech
           \item partial eye paralysis
        \end{itemize}
     \end{minipage}
     \hfill
-    \bigskip
-    \bigskip
 
-    \centering
-    Large \emph{individual variety} in preserved skills
-    \bigskip
-    \bigskip
+    \vfill
 
     \hfill
     \includegraphics[height=.075\textwidth]{figures/logos/uz_leuven.jpg}
@@ -617,9 +631,11 @@
   \frametitle{Covert visuospatial attention experiment}
 
   \begin{minipage}{.6\textwidth}
-    \includegraphics[height=.45\textwidth]{figures/patients/PD01a-obfuscated.jpg}%
+    \centering
+    \hfill
+    \includegraphics[height=.45\textwidth]{figures/patients/setup.pdf}%
     \hfill%
-    \includegraphics[height=.45\textwidth]{figures/patients/PD01b-obfuscated.jpg}%
+    \bigskip
     \bigskip
 
     {\small
@@ -666,7 +682,7 @@
 {
 \setbeamercolor{background canvas}{bg=black}
 \begin{frame}[c]
-  \frametitle{\textcolor{white}{Eye tracking}}
+  \frametitle{\textcolor{mylightgray}{Eye tracking}}
   \begin{minipage}{.6\textwidth}
     \centering
     \includegraphics[width=.8\textwidth]{figures/patients/fig_gaze_defense.png}
@@ -770,10 +786,11 @@
     \begin{itemize}
       \item Improved decoders enhance BCI \emph{efficiency}
       \bigskip
-      \item Improvements in gaze independent decoding improve
+      \item Improvements in eye movement independent decoding improve
         \emph{accessibility} for some
       \bigskip
-      \item Only affects some end-user cases, need for holistic approach
+      \item Occasionaly impacts end-users, need for holistic approach beyond
+        decoder design
       \bigskip
       \item Gained insight in requirements of BCI users with impaired eye movement
     \end{itemize}
@@ -800,47 +817,147 @@
 %
 %%% BACKUP Slides ==============================================================
 
+\begin{frame}[noframenumbering]
+  \centering
+
+  \frametitle{Gaze-independent visual reactive BCIs}
+
+  \begin{minipage}{.3\textwidth}
+    \footnotesize
+    \begin{itemize}
+      \item Auditory
+      \item Tactile
+      \item Visual
+      \smallskip
+
+      \item ERP
+      \item SSVEP
+      \item Localized covert attention shift
+    \end{itemize}
+  \end{minipage}\hfill%
+  \begin{minipage}{.3\textwidth}
+  \includegraphics[width=\textwidth]{figures/supp/feature_hexospell.png}
+  \end{minipage}\hfill%
+  \begin{minipage}{.3\textwidth}
+  \includegraphics[width=\textwidth]{figures/supp/gibs.png}
+  \end{minipage}\hfill%
+
+  \bigskip
+  \bigskip
+
+  \includegraphics[width=.7\textwidth]{figures/supp/rsvp.png}
+
+\end{frame}
 
 
 \begin{frame}[noframenumbering]
-  \frametitle{Experimental procedure \\ CVSA-ERP}
-  hardware, locations, timings, nr of blocks, ...
-\end{frame}
-\begin{frame}
-  \frametitle{Experimental procedure \\ end-user study}
-  hardware, locations, timings, nr of blocks, ...
+  \frametitle{Kronecker-Toeplitz structured \\ spatiotemporal covariance matrix estimation}
+  \scriptsize
+  \begin{minipage}{.2\textwidth}
+		$$
+      \tilde{\mat{S}}_{k+1} =
+			\frac{1}{N}
+      \sum^N_{n=1}\mat{X}_n^\intercal\hat{\mat{T}}_k^+\mat{X}_n
+			\label{eq:stbf-struct/fpi-spatial}
+		$$
+		$$
+      \tilde{\mat{T}}_{k+1} =
+			\frac{1}{N}
+      \sum^N_{n=1}\mat{X}_n\hat{\mat{S}}_k^+\mat{X}_n^\intercal
+			\label{eq:stbf-struct/fpi-temporal}
+		$$
+  \end{minipage}\hfill\vrule\hfill%
+  \begin{minipage}{.4\textwidth}
+		$$
+      \tilde{\mat{S}}_{k+1}^{(\beta)} =
+      (1-\beta_{k+1})\tilde{\mat{S}}_{k+1}
+      +\beta_{k+1}\frac{\Tr(\tilde{\mat{S}}_{k+1})}{C}\mathbb{I}
+			\label{eq:stbf-struct/fpi-spatial-shrunk}
+		$$
+		$$
+      \tilde{\mat{T}}_{k+1}^{(\gamma)} =
+      (1-\gamma_{k+1})\tilde{\mat{T}}_{k+1}
+      +\gamma_{k+1}\frac{\Tr(\tilde{\mat{T}}_{k+1})}{S}\mathbb{I}
+			\label{eq:stbf-struct/fpi-temporal-shrunk}
+		$$
+  \end{minipage}\hfill\vrule\hfill%
+  \begin{minipage}{.2\textwidth}
+		$$
+      \hat{\mat{S}}_{k+1} =
+      \frac{C}{\Tr\left[\tilde{\mat{S}}_{k+1}^{(\beta)}\right]}
+      \tilde{\mat{S}}_{k+1}^{(\beta)}
+			\label{eq:stbf-struct/fpi-spatial-norm}
+		$$
+		$$
+      \hat{\mat{T}}_{k+1} =
+      \frac{S}{\Tr\left[\tilde{\mat{T}}_{k+1}^{(\gamma)}\right]}
+      \tilde{\mat{T}}_{k+1}^{(\gamma)}
+			\label{eq:stbf-struct/fpi-temporal-norm}
+		$$
+  \end{minipage}
+
+
 \end{frame}
 
 \begin{frame}[noframenumbering]
+  \small
 
   \frametitle{Block-term tensor discriminant analysis procedure}
-  backward model image and equation
+  \begin{minipage}[t]{.5\textwidth}
+    HODA \emph{backward} model
+    \bigskip
 
-  forward model image and equation
+    \resizebox{.65\textwidth}{!}{
+      \input{figures/bttda/figure2.tikz.tex}
+    }
+  \end{minipage}\hfill%
+  \begin{minipage}[t]{.5\textwidth}
+    HODA \emph{forward} model
+    \smallskip
+    \hfill
 
-  deflation image and equations
+    \resizebox{\textwidth}{!}{
+      \input{figures/bttda/figure3.tikz.tex}
+    }
+  \end{minipage}
+  \vfill
 
-  model selection procedure
+  \begin{minipage}[c]{.5\textwidth}
+  \bigskip
+  BTTDA forward model
+  \smallskip
+
+    \resizebox{\textwidth}{!}{
+      \input{figures/bttda/figure4.tikz.tex}
+    }
+  \end{minipage}\hfill%
+  \begin{minipage}[c]{.5\textwidth}
+  \tiny
+
+	$$\left\{\mat{U}^*\right\}  = \frac{\sum_c^CN_c\left\|\bar{\ten{G}}(c)-\bar{\bar{\ten{G}}}\right\|_F^2}
+	{\sum_n^N\left\|\ten{G}(n)-\bar{\ten{G}}(c_n)\right\|_F^2}$$
+
+	$$\mat{A}_k = \argmin_{\mat{A}_k}
+	\sum_n^N\left[\mat{X}_k(n) -
+		\mat{A}_k\left(\ten{G}(n)\mmprs{\mat{A}}{k}\right)_k\right]^2$$
+
+  $$\ten{G}^{(b)} = \ten{E}^{(b-1)}\mmpr{\mat{U}^{(b)}}$$
+
+
+
+  \end{minipage}
 \end{frame}
 
 \begin{frame}[noframenumbering]
-
-  \frametitle{Block-term tensor discriminant analysis procedure}
-  backward model image and equation
-
-  forward model image and equation
-
-  deflation image and equations
-
-  model selection procedure
+  \frametitle{Classifier-based latency estimation with Woody iterations (train)}
+  \centering
+  \includegraphics[width=.6\textwidth]{figures/covert/figure1.pdf}
 \end{frame}
 
 \begin{frame}[noframenumbering]
- WCBLE training procedure
-\end{frame}
-
-\begin{frame}[noframenumbering]
-  WCBLE test procedure
+  \frametitle{Classifier-based latency estimation with Woody iterations (test)}
+  \centering
+  \includegraphics[width=.6\textwidth]{figures/covert/figure2.pdf}
 \end{frame}
 
 \begin{frame}[noframenumbering]
@@ -866,7 +983,7 @@
   \frametitle{Visual skill and eye movement impairment}
   \newcommand{\skill}{}
   \newcommand{\noskill}{x}
-  \newcommand{\snoskill}{o}
+  \newcommand{\snoskill}{\emph{o}}
 
   \begin{tabular}{l|ccccccc}
                             & PA1      & PB1      & PB2       & PB4      & PC2       & PC3       & PC4 \\ \hline
@@ -881,7 +998,7 @@
   \end{tabular}
   \bigskip
 
-  x: impaired, o: severely impaired
+  \emph{x}: impaired, \emph{o}: severely impaired
 \end{frame}
 
 
@@ -901,7 +1018,16 @@
     \hline
   \end{tabular}
   \end{minipage}\hfill%
-  \begin{minipage}[c]{.4\textwidth}
+  \begin{minipage}[c]{.45\textwidth}
+    \includegraphics[width=\textwidth]{figures/supp/ucd.png}
+    \bigskip
+
+    Evaluate
+    \begin{itemize}
+      \item effectiveness
+      \item efficiency
+      \item user satisfaction
+    \end{itemize}
   \end{minipage}
 
 \end{frame}

@@ -9,6 +9,8 @@
 \RequirePackage{amsmath}
 \RequirePackage{tcolorbox}
 \RequirePackage[method=widget]{animate}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
 
 % Commands ====================================================================
 
@@ -73,6 +75,25 @@
     },
   }
 }
+% Math declarations ===========================================================
+
+
+\newcommand{\ten}[1]{\underline{\mathbf{#1}}} % tensor
+\newcommand{\mat}[1]{\mathbf{#1}} % matrix
+\renewcommand{\vec}[1]{\mathbf{#1}} % matrix
+\newcommand{\mpr}[2]{\times_{#2} {#1}_{#2}} % mode product
+\newcommand{\mmpr}[1]{\times\left\{#1\right\}} % multi-mode product
+\newcommand{\mmpri}[1]{\times\{#1\}} % inline multi-mode product
+\newcommand{\mmprs}[2]{\times_{-#2}\left\{#1\right\}} % multi-mode product skip
+\newcommand{\mmprsi}[2]{\times_{-#2}\{#1\}} % inline multi-mode product skip
+\newcommand{\ev}[2]{\text{E}\left[#1\right]_{#2}}
+\newcommand{\argmax}{\mathop{\mathrm{argmax}}}
+\newcommand{\argmin}{\mathop{\mathrm{argmin}}}
+\newcommand{\vect}{\mathop{\mathrm{vec}}}
+\newcommand{\nmse}{\mathop{\mathrm{NMSE}}}
+\newcommand{\Tr}{\mathop{\mathrm{Tr}}}
+
 
 % Include =====================================================================
 \input{tensors.tex}
+%
